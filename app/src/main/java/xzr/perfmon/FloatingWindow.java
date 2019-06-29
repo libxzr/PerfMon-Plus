@@ -43,7 +43,7 @@ public class FloatingWindow extends Service {
         params.gravity = Gravity.LEFT | Gravity.TOP;
         params.x = 0;
         params.y = 0;
-        params.width = 500;
+        params.width = 350;
         params.height = 300;
         main= (LinearLayout) LayoutInflater.from(this).inflate(R.layout.floatwindow,null);
         TextView close=main.findViewById(R.id.textView);
