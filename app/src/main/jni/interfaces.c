@@ -69,7 +69,7 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getm4m
 
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuload
         (JNIEnv *env, jclass jclass1, jint cpu) {
-    int time1,time2,idle1,idle2;
+    int time1=0,time2=0,idle1=0,idle2=0;
     if(getCpuTime(cpu,&time1,&idle1)) {
         return UNSUPPORTED;
     }
