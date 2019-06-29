@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +19,15 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import static xzr.perfmon.RefreshingDateThread.adrenofreq;
+import static xzr.perfmon.RefreshingDateThread.adrenoload;
+import static xzr.perfmon.RefreshingDateThread.cpubw;
+import static xzr.perfmon.RefreshingDateThread.cpufreq;
+import static xzr.perfmon.RefreshingDateThread.cpuload;
+import static xzr.perfmon.RefreshingDateThread.cpuonline;
+import static xzr.perfmon.RefreshingDateThread.m4m;
+import static xzr.perfmon.RefreshingDateThread.mincpubw;
+
 public class FloatingWindow extends Service {
     static String TAG="FloatingWindow";
     public static boolean do_exit=true;
@@ -26,6 +37,7 @@ public class FloatingWindow extends Service {
     LinearLayout main;
     static TextView line[];
     static int linen;
+    static Handler ui_refresher;
 
     @SuppressLint("ClickableViewAccessibility")
     void init(){
@@ -78,6 +90,41 @@ public class FloatingWindow extends Service {
         line=new TextView[linen];
         params.height=(linen+1)*54;
         windowManager.updateViewLayout(main,params);
+        ui_refresher=new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message message) {
+                int i;
+                for (i=0;i<RefreshingDateThread.cpunum;i++){
+                    String text="cpu" + i + " ";
+                    if(cpuonline[i]==1) {
+                        text=text+ cpufreq[i] + "Mhz";
+                        if (Support.support_cpuload)
+                            text = text + Tools.format_ify_add_blank(cpufreq[i] + "") + cpuload[i] + "%";
+                    }
+                    else{
+                        text=text+ "离线";
+                    }
+                    line[i].setText(text);
+                }
+                if(Support.support_adrenofreq) {
+                    line[i].setText("gpu0 " + adrenofreq + "Mhz"+Tools.format_ify_add_blank(adrenofreq+"") + adrenoload + "%");
+                    i++;
+                }
+                if (Support.support_mincpubw) {
+                    line[i].setText("mincpubw " + mincpubw);
+                    i++;
+                }
+                if (Support.support_cpubw) {
+                    line[i].setText("cpubw " + cpubw);
+                    i++;
+                }
+                if (Support.support_m4m) {
+                    line[i].setText("m4m " + m4m+" Mhz");
+                    i++;
+                }
+                return false;
+            }
+        });
 
         for (int i=0;i<linen;i++){
             line[i]=new TextView(this);
@@ -88,39 +135,6 @@ public class FloatingWindow extends Service {
         windowManager.updateViewLayout(main,params);
         new RefreshingDateThread().start();
     }
-
-    public static void refresh_ui(int[] freq, int[] load, int[] online, int gpufreq, int gpuload, int mincpubw, int cpubw, int m4m){
-        int i;
-        for (i=0;i<RefreshingDateThread.cpunum;i++){
-                String text="cpu" + i + " ";
-                if(online[i]==1) {
-                    text=text+ freq[i] + "Mhz";
-                    if (Support.support_cpuload)
-                        text = text + Tools.format_ify_add_blank(freq[i] + "") + load[i] + "%";
-                }
-                else{
-                    text=text+ "离线";
-                }
-                line[i].setText(text);
-            }
-        if(Support.support_adrenofreq) {
-            line[i].setText("gpu0 " + gpufreq + "Mhz"+Tools.format_ify_add_blank(gpufreq+"") + gpuload + "%");
-            i++;
-        }
-        if (Support.support_mincpubw) {
-            line[i].setText("mincpubw " + mincpubw);
-            i++;
-        }
-        if (Support.support_cpubw) {
-            line[i].setText("cpubw " + cpubw);
-            i++;
-        }
-        if (Support.support_m4m) {
-            line[i].setText("m4m " + m4m+" Mhz");
-            i++;
-        }
-        }
-
 
     @Override
     public IBinder onBind(Intent intent) {

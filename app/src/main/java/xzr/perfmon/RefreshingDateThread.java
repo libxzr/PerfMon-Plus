@@ -2,9 +2,14 @@ package xzr.perfmon;
 
 public class RefreshingDateThread extends Thread {
     static int cpunum;
-    int[] cpufreq;
-    int[] cpuload;
-    int[] cpuonline;
+    static int[] cpufreq;
+    static int[] cpuload;
+    static int[] cpuonline;
+    static int adrenoload;
+    static int adrenofreq;
+    static int mincpubw;
+    static int cpubw;
+    static int m4m;
     public void run(){
         cpufreq=new int[cpunum];
         cpuload=new int[cpunum];
@@ -14,7 +19,12 @@ public class RefreshingDateThread extends Thread {
                     cpufreq[i]=JniTools.getcpufreq(i);
                     cpuonline[i]=JniTools.getcpuonlinestatus(i);
                 }
-                    FloatingWindow.refresh_ui(cpufreq,cpuload,cpuonline, JniTools.getadrenofreq(), JniTools.getadrenoload(), JniTools.getmincpubw(), JniTools.getcpubw(), JniTools.getm4m());
+                adrenofreq=JniTools.getadrenofreq();
+                adrenoload=JniTools.getadrenoload();
+                mincpubw=JniTools.getmincpubw();
+                cpubw=JniTools.getcpubw();
+                m4m=JniTools.getm4m();
+                FloatingWindow.ui_refresher.sendEmptyMessage(0);
                 for (int i=0;i<cpunum;i++){
                     if(cpuonline[i]==1) {
                         final int ii=i;
