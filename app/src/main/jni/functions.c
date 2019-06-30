@@ -54,8 +54,6 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
 }
 #define NULLTEMP (-233)
 #define TSEN "tsens_tz_sensor"
-#define BATT "battery"
-#define BMS "bms"
 
 int getmaxtemp(int *temp){
     FILE *process;
@@ -76,18 +74,11 @@ int getmaxtemp(int *temp){
 
     n=0;
     while (fscanf(process,"%d",&cache)!=EOF) {
-        if (!strncmp(types[n],TSEN,strlen(TSEN)))
-            cache=cache/10;
-
-        if (!strncmp(types[n],BATT,strlen(BATT)))
-            cache=cache/1000;
-
-        if (!strncmp(types[n],BMS,strlen(BMS)))
-            cache=cache/1000;
-
-        if(cache>*temp)
-            *temp=cache;
-
+        if (!strncmp(types[n],TSEN,strlen(TSEN))) {
+            cache = cache / 10;
+            if (cache > *temp)
+                *temp = cache;
+        }
         n++;
     }
     return 0;
