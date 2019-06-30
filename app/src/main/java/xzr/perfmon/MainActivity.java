@@ -116,7 +116,7 @@ public class MainActivity extends Activity {
                         finish();
                     }
                     catch (Exception e){
-
+                        Toast.makeText(MainActivity.this,"没有ROOT权限",Toast.LENGTH_SHORT).show();
                     }
                 }
             });
