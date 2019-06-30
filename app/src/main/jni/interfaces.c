@@ -75,7 +75,7 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuload
     }
     usleep(pow(0.8*10,6));
     getCpuTime(cpu,&time2,&idle2);
-    return fabs((1-((float)idle2-idle1)/(time2-time1))*100);    //Hack: IDK why but it sometimes returns minus value
+    return (1-((float)idle2-idle1)/(time2-time1))*100;
 }
 
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuonlinestatus
