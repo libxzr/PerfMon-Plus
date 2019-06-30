@@ -17,8 +17,9 @@ public class RefreshingDateThread extends Thread {
         cpuonline=new int[cpunum];
         while (!FloatingWindow.do_exit){
                 for (int i=0;i<cpunum;i++){
-                    cpufreq[i]=JniTools.getcpufreq(i);
                     cpuonline[i]=JniTools.getcpuonlinestatus(i);
+                    if(cpuonline[i]==1)
+                    cpufreq[i]=JniTools.getcpufreq(i);
                 }
                 adrenofreq=JniTools.getadrenofreq();
                 adrenoload=JniTools.getadrenoload();
