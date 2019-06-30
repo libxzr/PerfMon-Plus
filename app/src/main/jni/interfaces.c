@@ -89,3 +89,12 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuonlinestatus
 
     return status;
 }
+
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmaxtemp
+        (JNIEnv *env, jclass jclass1){
+    int temp;
+    if(getmaxtemp(&temp))
+        return UNSUPPORTED;
+
+    return temp;
+}

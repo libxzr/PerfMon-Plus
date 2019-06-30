@@ -10,6 +10,7 @@ public class RefreshingDateThread extends Thread {
     static int mincpubw;
     static int cpubw;
     static int m4m;
+    static int maxtemp;
     public void run(){
         cpufreq=new int[cpunum];
         cpuload=new int[cpunum];
@@ -24,6 +25,7 @@ public class RefreshingDateThread extends Thread {
                 mincpubw=JniTools.getmincpubw();
                 cpubw=JniTools.getcpubw();
                 m4m=JniTools.getm4m();
+                maxtemp=JniTools.getmaxtemp();
                 FloatingWindow.ui_refresher.sendEmptyMessage(0);
                 for (int i=0;i<cpunum;i++){
                     if(cpuonline[i]==1) {

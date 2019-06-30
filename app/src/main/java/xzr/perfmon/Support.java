@@ -7,6 +7,7 @@ class Support {
     static boolean support_mincpubw;
     static boolean support_cpubw;
     static boolean support_m4m;
+    static boolean support_temp;
 
     static final int UNSUPPORTED=-1;
 
@@ -49,6 +50,13 @@ class Support {
             support_m4m=true;
         }
         else support_m4m=false;
+
+        if(JniTools.getmaxtemp()!=UNSUPPORTED) {
+            linen++;
+            support_temp=true;
+        }
+        else support_temp=false;
+
         return linen;
     }
 

@@ -71,6 +71,14 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuload
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuonlinestatus
   (JNIEnv *, jclass, jint);
 
+/*
+ * Class:     xzr_perfmon_JniTools
+ * Method:    getmaxtemp
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmaxtemp
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

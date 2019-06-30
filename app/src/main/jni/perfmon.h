@@ -11,5 +11,6 @@
 
 int readfileint(const char *from,int *to);
 int getCpuTime(int cpu,int *fulltime,int *idletime);
+int getmaxtemp(int *temp);
 
 #endif //PERFMON_PERFMON_H
