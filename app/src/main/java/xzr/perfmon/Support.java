@@ -20,10 +20,7 @@ class Support {
         }
         else support_cpufreq=false;
 
-        if(JniTools.getcpuload(0)!=UNSUPPORTED) {
-            support_cpuload=true;
-        }
-        else support_cpuload=false;
+        support_cpuload=JniTools.checkcpuload();
 
         if(JniTools.getadrenofreq()!=UNSUPPORTED) {
             linen++;

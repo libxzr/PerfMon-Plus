@@ -65,6 +65,14 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuload
 
 /*
  * Class:     xzr_perfmon_JniTools
+ * Method:    checkcpuload
+ * Signature: ()Z
+ */
+JNIEXPORT jboolean JNICALL Java_xzr_perfmon_JniTools_checkcpuload
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     xzr_perfmon_JniTools
  * Method:    getcpuonlinestatus
  * Signature: (I)I
  */

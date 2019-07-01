@@ -98,3 +98,11 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmaxtemp
 
     return temp;
 }
+
+JNIEXPORT jboolean JNICALL Java_xzr_perfmon_JniTools_checkcpuload
+        (JNIEnv *env, jclass jclass1){
+    FILE *file=fopen("/proc/stat","r");
+    if (file==NULL)
+        return 0;
+    return 1;
+}
