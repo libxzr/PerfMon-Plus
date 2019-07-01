@@ -55,7 +55,7 @@ public class FloatingWindow extends Service {
         params.gravity = Gravity.LEFT | Gravity.TOP;
         params.x = 0;
         params.y = 0;
-        params.width = 380;
+        params.width = SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.width,SharedPreferencesUtil.default_width);
         params.height = 300;
         main= new LinearLayout(this);
         main.setOrientation(LinearLayout.VERTICAL);
@@ -93,7 +93,10 @@ public class FloatingWindow extends Service {
         LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         line=new TextView[linen];
-        params.height=(linen+1)*54;
+        if (SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.height,SharedPreferencesUtil.default_height)!=SharedPreferencesUtil.default_height)
+            params.height=SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.height,SharedPreferencesUtil.default_height);
+        else
+            params.height=(linen+1)*54;
         windowManager.updateViewLayout(main,params);
         ui_refresher=new Handler(new Handler.Callback() {
             @Override

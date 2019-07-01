@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
         main=new LinearLayout(this);
         main.setOrientation(LinearLayout.VERTICAL);
         setContentView(main);
+        SharedPreferencesUtil.init(this);
 
         if(!FloatingWindow.do_exit){
             Toast.makeText(MainActivity.this,"请先关闭悬浮窗 再打开软件",Toast.LENGTH_SHORT).show();
@@ -91,6 +92,17 @@ public class MainActivity extends Activity {
                 public void onClick(View view) {
                     permissioncheck();
                     finish();
+                }
+            });
+        }
+        {
+            Button button = new Button(this);
+            button.setText("设置");
+            main.addView(button);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    xzr.perfmon.Settings.creatDialog(MainActivity.this);
                 }
             });
         }

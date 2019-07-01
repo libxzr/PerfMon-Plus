@@ -11,7 +11,9 @@ public class RefreshingDateThread extends Thread {
     static int cpubw;
     static int m4m;
     static int maxtemp;
+    static int delay;
     public void run(){
+        delay= SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.delay, SharedPreferencesUtil.default_delay);
         cpufreq=new int[cpunum];
         cpuload=new int[cpunum];
         cpuonline=new int[cpunum];
@@ -39,7 +41,7 @@ public class RefreshingDateThread extends Thread {
                     }
                 }
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(delay);
                 }
                 catch (Exception e){
 
