@@ -52,7 +52,6 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
     return 0;
 
 }
-#define NULLTEMP (-233)
 #define TSEN "tsens_tz_sensor"
 
 int getmaxtemp(int *temp){

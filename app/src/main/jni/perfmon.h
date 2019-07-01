@@ -8,6 +8,7 @@
 #include <jni.h>
 #define DEFAULT_PATH_SIZE 60
 #define UNSUPPORTED (-1)
+#define NULLTEMP (-233)
 
 int readfileint(const char *from,int *to);
 int getCpuTime(int cpu,int *fulltime,int *idletime);
