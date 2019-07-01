@@ -52,33 +52,27 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
     return 0;
 
 }
-#define TSEN "tsens_tz_sensor"
 
 int getmaxtemp(int *temp){
     FILE *process;
-    char types[100][20];
-    int n=0,cache;
+    int cache=NULLTEMP;
     *temp=NULLTEMP;
-    process=popen("cat /sys/class/thermal/thermal_zone*/type","r");
-    if (process==NULL)
-        return UNSUPPORTED;
-
-    while (fscanf(process,"%s",types[n])!=EOF)
-        n++;
-    fclose(process);
-
     process=popen("cat /sys/class/thermal/thermal_zone*/temp","r");
     if (process==NULL)
         return UNSUPPORTED;
 
-    n=0;
-    while (fscanf(process,"%d",&cache)!=EOF) {
-        if (!strncmp(types[n],TSEN,strlen(TSEN))) {
-            cache = cache / 10;
-            if (cache > *temp)
-                *temp = cache;
+    while (fscanf(process,"%d",&cache)!=EOF){
+        if (cache>2000) {
+            cache = cache / 1000;
         }
-        n++;
+        else if(cache>100){
+            cache=cache/10;
+        }
+        if(cache>*temp){
+            *temp=cache;
+        }
     }
+    fclose(process);
+
     return 0;
 }
