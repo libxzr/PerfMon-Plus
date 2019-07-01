@@ -8,7 +8,7 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@android:style/Theme.Material.Dialog">
         <service
             android:name=".FloatingWindow"
             android:enabled="true"
