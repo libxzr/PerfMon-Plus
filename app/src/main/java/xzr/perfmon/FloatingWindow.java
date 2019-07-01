@@ -11,7 +11,6 @@ import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +57,13 @@ public class FloatingWindow extends Service {
         params.y = 0;
         params.width = 380;
         params.height = 300;
-        main= (LinearLayout) LayoutInflater.from(this).inflate(R.layout.floatwindow,null);
-        TextView close=main.findViewById(R.id.textView);
+        main= new LinearLayout(this);
+        main.setOrientation(LinearLayout.VERTICAL);
+        main.setBackgroundColor(getResources().getColor(R.color.floating_window_backgrouns));
+        TextView close=new TextView(this);
+        close.setText("关闭");
+        close.setTextColor(getResources().getColor(R.color.white));
+        main.addView(close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

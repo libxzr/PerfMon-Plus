@@ -23,15 +23,15 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        main=new LinearLayout(this);
+        main.setOrientation(LinearLayout.VERTICAL);
+        setContentView(main);
 
         if(!FloatingWindow.do_exit){
             Toast.makeText(MainActivity.this,"请先关闭悬浮窗 再打开软件",Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
-
-        main=findViewById(R.id.mainlayout);
 
         //Move from service:onCreate in order to show the supporting list
         RefreshingDateThread.cpunum=Tools.getCpuNum();
