@@ -140,8 +140,39 @@ public class MainActivity extends Activity {
         }
         {
             TextView textView=new TextView(this);
-            textView.setText("* 并不是真正的关闭SELinux 仅仅只是make it permissive\n* 此操作可能在一些设备上诱发崩溃");
+            textView.setText("* 并不是真正的关闭SELinux 仅仅只是make it permissive\n* 此操作可能在一些设备上诱发崩溃\n");
             main.addView(textView);
+        }
+        {
+            LinearLayout line=new LinearLayout(MainActivity.this);
+            main.addView(line);
+            {
+                TextView textView = new TextView(this);
+                textView.setText("访问Github ");
+                line.addView(textView);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Uri uri = Uri.parse("https://github.com/xzr467706992/PerfMon-Plus");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            {
+                TextView textView = new TextView(this);
+                textView.setText("| 访问酷安（给个五星好评吧） ");
+                line.addView(textView);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Uri uri = Uri.parse("https://www.coolapk.com/apk/xzr.perfmon");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
+                });
+            }
         }
     }
 
