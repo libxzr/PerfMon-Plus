@@ -26,6 +26,7 @@ import static xzr.perfmon.RefreshingDateThread.cpuload;
 import static xzr.perfmon.RefreshingDateThread.cpuonline;
 import static xzr.perfmon.RefreshingDateThread.m4m;
 import static xzr.perfmon.RefreshingDateThread.maxtemp;
+import static xzr.perfmon.RefreshingDateThread.memusage;
 import static xzr.perfmon.RefreshingDateThread.mincpubw;
 
 public class FloatingWindow extends Service {
@@ -132,6 +133,10 @@ public class FloatingWindow extends Service {
                 }
                 if (Support.support_temp) {
                     line[i].setText("温度 " + maxtemp+" ℃");
+                    i++;
+                }
+                if (Support.support_mem) {
+                    line[i].setText("内存 " + memusage+"%");
                     i++;
                 }
                 return false;

@@ -106,3 +106,17 @@ JNIEXPORT jboolean JNICALL Java_xzr_perfmon_JniTools_checkcpuload
         return 0;
     return 1;
 }
+
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmemusage
+        (JNIEnv *env, jclass jclass1){
+    int total=-1;
+    int available=-1;
+
+    if(getmeminfo("MemTotal",&total))
+        return UNSUPPORTED;
+
+    if(getmeminfo("MemAvailable",&available))
+        return UNSUPPORTED;
+
+    return (1-(float)available/total)*100;
+}

@@ -108,3 +108,28 @@ int getmaxtemp(int *temp){
     fclose(process);
     return 0;
 }
+
+int getmeminfo(char name[],int *data){
+    FILE *meminfo;
+    char cache[20]="";
+
+    meminfo=fopen("/proc/meminfo","r");
+    if(meminfo==NULL)
+        return UNSUPPORTED;
+
+    //Get target line
+    while (fscanf(meminfo,"%s",cache)!=EOF){
+        if(!strncmp(cache,name,strlen(name))){
+            //Locked target line
+            //Read target data
+            if(fscanf(meminfo,"%s",cache)==EOF)
+                return UNSUPPORTED;
+            *data=atoi(cache);
+        }
+    }
+    fclose(meminfo);
+
+    return 0;
+
+
+}

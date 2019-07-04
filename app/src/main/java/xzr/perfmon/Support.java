@@ -8,6 +8,7 @@ class Support {
     static boolean support_cpubw;
     static boolean support_m4m;
     static boolean support_temp;
+    static boolean support_mem;
 
     static final int UNSUPPORTED=-1;
 
@@ -53,6 +54,12 @@ class Support {
             support_temp=true;
         }
         else support_temp=false;
+
+        if(JniTools.getmemusage()!=UNSUPPORTED) {
+            linen++;
+            support_mem=true;
+        }
+        else support_mem=false;
 
         return linen;
     }

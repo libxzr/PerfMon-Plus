@@ -14,4 +14,5 @@ public class JniTools {
     public static native boolean checkcpuload();
     public static native int getcpuonlinestatus(int cpu);
     public static native int getmaxtemp();
+    public static native int getmemusage();
 }
