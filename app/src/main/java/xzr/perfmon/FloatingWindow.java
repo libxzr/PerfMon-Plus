@@ -63,6 +63,7 @@ public class FloatingWindow extends Service {
         main= new LinearLayout(this);
         main.setOrientation(LinearLayout.VERTICAL);
         main.setBackgroundColor(getResources().getColor(R.color.floating_window_backgrouns));
+        main.setPadding((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 5,getResources().getDisplayMetrics()),0,0,0);
         TextView close=new TextView(this);
         close.setText("关闭");
         close.setTextColor(getResources().getColor(R.color.white));
