@@ -26,7 +26,6 @@ public class MainActivity extends Activity {
         main=new LinearLayout(this);
         main.setOrientation(LinearLayout.VERTICAL);
         setContentView(main);
-        SharedPreferencesUtil.init(this);
 
         if(!FloatingWindow.do_exit){
             Toast.makeText(MainActivity.this,"请先关闭悬浮窗 再打开软件",Toast.LENGTH_SHORT).show();
@@ -37,6 +36,7 @@ public class MainActivity extends Activity {
         //Move from service:onCreate in order to show the supporting list
         RefreshingDateThread.cpunum=Tools.getCpuNum();
         FloatingWindow.linen=Support.CheckSupport();
+        SharedPreferencesUtil.init(this);
 
         addview();
 
