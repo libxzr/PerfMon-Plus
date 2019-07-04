@@ -18,6 +18,6 @@ public class SharedPreferencesUtil {
 
     static void init(Context context){
         sharedPreferences=context.getSharedPreferences("main",0);
-        default_width=(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 140,context.getResources().getDisplayMetrics());
+        default_width=(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 145,context.getResources().getDisplayMetrics());
     }
 }
