@@ -126,7 +126,7 @@ public class FloatingWindow extends Service {
                     for (i = 0; i < RefreshingDateThread.cpunum; i++) {
                         String text = "cpu" + i + " ";
                         if (cpuonline[i] == 1) {
-                            text = text + cpufreq[i] + "Mhz";
+                            text = text + cpufreq[i] + " Mhz";
                             if (Support.support_cpuload)
                                 text = text + Tools.format_ify_add_blank(cpufreq[i] + "") + cpuload[i] + "%";
                         } else {
@@ -136,7 +136,7 @@ public class FloatingWindow extends Service {
                     }
                 }
                 if(Support.support_adrenofreq) {
-                    line[i].setText("gpu0 " + adrenofreq + "Mhz"+Tools.format_ify_add_blank(adrenofreq+"") + adrenoload + "%");
+                    line[i].setText("gpu0 " + adrenofreq + " Mhz"+Tools.format_ify_add_blank(adrenofreq+"") + adrenoload + "%");
                     i++;
                 }
                 if (Support.support_mincpubw) {
