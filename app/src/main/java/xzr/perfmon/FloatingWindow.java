@@ -102,18 +102,19 @@ public class FloatingWindow extends Service {
         ui_refresher=new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message message) {
-                int i;
-                for (i=0;i<RefreshingDateThread.cpunum;i++){
-                    String text="cpu" + i + " ";
-                    if(cpuonline[i]==1) {
-                        text=text+ cpufreq[i] + "Mhz";
-                        if (Support.support_cpuload)
-                            text = text + Tools.format_ify_add_blank(cpufreq[i] + "") + cpuload[i] + "%";
+                int i=0;
+                if(Support.support_cpufreq) {
+                    for (i = 0; i < RefreshingDateThread.cpunum; i++) {
+                        String text = "cpu" + i + " ";
+                        if (cpuonline[i] == 1) {
+                            text = text + cpufreq[i] + "Mhz";
+                            if (Support.support_cpuload)
+                                text = text + Tools.format_ify_add_blank(cpufreq[i] + "") + cpuload[i] + "%";
+                        } else {
+                            text = text + "离线";
+                        }
+                        line[i].setText(text);
                     }
-                    else{
-                        text=text+ "离线";
-                    }
-                    line[i].setText(text);
                 }
                 if(Support.support_adrenofreq) {
                     line[i].setText("gpu0 " + adrenofreq + "Mhz"+Tools.format_ify_add_blank(adrenofreq+"") + adrenoload + "%");
