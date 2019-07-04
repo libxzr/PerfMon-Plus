@@ -53,26 +53,58 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
 
 }
 
+#define MAX_SENSOR_NUM 50
+#define DEFAULT_SENSOR_NAME_SIZE 20
+#define TSENS_TZ "tsens_tz_sensor"
 int getmaxtemp(int *temp){
+    char folders[MAX_SENSOR_NUM][DEFAULT_SENSOR_NAME_SIZE];
+    char types[MAX_SENSOR_NUM][DEFAULT_SENSOR_NAME_SIZE];
+    int num=0;
+    int ctemp=NULLTEMP;
+    char cpath[DEFAULT_PATH_SIZE]="";
     FILE *process;
-    int cache=NULLTEMP;
-    *temp=NULLTEMP;
-    process=popen("cat /sys/class/thermal/thermal_zone*/temp","r");
-    if (process==NULL)
-        return UNSUPPORTED;
 
-    while (fscanf(process,"%d",&cache)!=EOF){
-        if (cache>2000) {
-            cache = cache / 1000;
-        }
-        else if(cache>100){
-            cache=cache/10;
-        }
-        if(cache>*temp){
-            *temp=cache;
-        }
+    *temp=NULLTEMP;
+    for(int i=0;i<MAX_SENSOR_NUM;i++){
+        strcpy(folders[i],"");
+        strcpy(types[i],"");
     }
+
+    process=popen("ls /sys/class/thermal | grep thermal_zone","r");
+    if(process==NULL)
+        return UNSUPPORTED;
+    //Read sensor folders
+    while(fscanf(process,"%s",folders[num])!=EOF)
+        num++;
     fclose(process);
 
+    num=0;
+    process=popen("cat /sys/class/thermal/thermal_zone*/type","r");
+    if(process==NULL)
+        return UNSUPPORTED;
+    //Read sensor type
+    while(fscanf(process,"%s",types[num])!=EOF)
+        num++;
+    fclose(process);
+
+    //Looking for the target sensor
+    for(int i=0;i<MAX_SENSOR_NUM;i++){
+        if(!strncmp(TSENS_TZ,types[i],strlen(TSENS_TZ))){
+            //Locked the target
+            sprintf(cpath,"/sys/class/thermal/%s/temp",folders[i]);
+            process=fopen(cpath,"r");
+            if(process==NULL)
+                continue;
+            if(fscanf(process,"%d",&ctemp)==EOF) {
+                fclose(process);
+                continue;
+            }
+            ctemp=ctemp/10;
+            if(*temp<ctemp)
+                *temp=ctemp;
+        }
+    }
+
+    fclose(process);
     return 0;
 }
