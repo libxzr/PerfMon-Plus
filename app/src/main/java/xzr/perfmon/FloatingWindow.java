@@ -73,11 +73,28 @@ public class FloatingWindow extends Service {
             }
         });
         main.setOnTouchListener(new View.OnTouchListener() {
+            private int x,y;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                params.x = (int) event.getRawX() - 250;
-                params.y = (int) event.getRawY() - 150 - statusBarHeight;
-                windowManager.updateViewLayout(main,params);
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        x = (int) event.getRawX();
+                        y = (int) event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        int nowX = (int) event.getRawX();
+                        int nowY = (int) event.getRawY();
+                        int movedX = nowX - x;
+                        int movedY = nowY - y;
+                        x = nowX;
+                        y = nowY;
+                        params.x = params.x + movedX;
+                        params.y = params.y + movedY;
+                        windowManager.updateViewLayout(main, params);
+                        break;
+                    default:
+                        break;
+                }
                 return false;
             }
         });
