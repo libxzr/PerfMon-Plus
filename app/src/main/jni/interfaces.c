@@ -120,3 +120,13 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmemusage
 
     return (1-(float)available/total)*100;
 }
+
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcurrent
+        (JNIEnv *env, jclass jclass1){
+    int current;
+
+    if(readfileint("/sys/class/power_supply/battery/current_now",&current))
+        return UNSUPPORTED;
+
+    return -current/1000;
+}

@@ -12,6 +12,7 @@ public class RefreshingDateThread extends Thread {
     static int m4m;
     static int maxtemp;
     static int memusage;
+    static int current;
     static int delay;
     public void run(){
         delay= SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.delay, SharedPreferencesUtil.default_delay);
@@ -31,6 +32,7 @@ public class RefreshingDateThread extends Thread {
                 m4m=JniTools.getm4m();
                 maxtemp=JniTools.getmaxtemp();
                 memusage=JniTools.getmemusage();
+                current=JniTools.getcurrent();
                 FloatingWindow.ui_refresher.sendEmptyMessage(0);
                 for (int i=0;i<cpunum;i++){
                     if(cpuonline[i]==1) {

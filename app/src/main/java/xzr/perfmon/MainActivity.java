@@ -85,6 +85,11 @@ public class MainActivity extends Activity {
         }
         {
             TextView textView=new TextView(this);
+            textView.setText("支持电流监控："+Tools.bool2text(Support.support_current));
+            main.addView(textView);
+        }
+        {
+            TextView textView=new TextView(this);
             textView.setText("不支持的项目可能是你的设备真的不支持，也有可能是因为SELinux的阻挠。");
             main.addView(textView);
         }

@@ -25,6 +25,7 @@ import static xzr.perfmon.RefreshingDateThread.cpubw;
 import static xzr.perfmon.RefreshingDateThread.cpufreq;
 import static xzr.perfmon.RefreshingDateThread.cpuload;
 import static xzr.perfmon.RefreshingDateThread.cpuonline;
+import static xzr.perfmon.RefreshingDateThread.current;
 import static xzr.perfmon.RefreshingDateThread.m4m;
 import static xzr.perfmon.RefreshingDateThread.maxtemp;
 import static xzr.perfmon.RefreshingDateThread.memusage;
@@ -156,6 +157,10 @@ public class FloatingWindow extends Service {
                 }
                 if (Support.support_mem) {
                     line[i].setText("内存 " + memusage+"%");
+                    i++;
+                }
+                if (Support.support_current) {
+                    line[i].setText("电流 " + current+" mA");
                     i++;
                 }
                 return false;

@@ -9,6 +9,7 @@ class Support {
     static boolean support_m4m;
     static boolean support_temp;
     static boolean support_mem;
+    static boolean support_current;
 
     static final int UNSUPPORTED=-1;
 
@@ -60,6 +61,12 @@ class Support {
             support_mem=true;
         }
         else support_mem=false;
+
+        if(JniTools.getcurrent()!=UNSUPPORTED) {
+            linen++;
+            support_current=true;
+        }
+        else support_current=false;
 
         return linen;
     }
