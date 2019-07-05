@@ -19,7 +19,7 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
     FILE *file;
     char cpustr[5];
     char cache[10];
-    int num=0;
+    int num=0,c;
 
     sprintf(cpustr,"cpu%d",cpu);
     file=fopen("/proc/stat","r");
@@ -29,6 +29,7 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
     //Get target point
     while (1){
         if(fscanf(file,"%s",cache)==EOF) {
+            fclose(file);
             return UNSUPPORTED;
         }
         if (!strcmp(cpustr,cache)){
@@ -39,7 +40,7 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
     //Now the next cache[] should be cputimes
     while (1){
         fscanf(file,"%s",cache);
-        int c=atoi(cache);
+        c=atoi(cache);
         if (strcmp(cache,"0") && !c){     //Start of next line
             break;
         }
@@ -49,6 +50,7 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
         }
         *fulltime=*fulltime+c;
     }
+    fclose(file);
     return 0;
 
 }
