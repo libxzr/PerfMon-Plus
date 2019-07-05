@@ -55,8 +55,8 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
 
 }
 
-#define MAX_SENSOR_NUM 50
-#define DEFAULT_SENSOR_NAME_SIZE 20
+#define MAX_SENSOR_NUM 100
+#define DEFAULT_SENSOR_NAME_SIZE 30
 #define TSENS_TZ "tsens_tz_sensor"
 int getmaxtemp(int *temp){
     char folders[MAX_SENSOR_NUM][DEFAULT_SENSOR_NAME_SIZE];
