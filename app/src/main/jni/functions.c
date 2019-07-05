@@ -58,6 +58,7 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
 #define MAX_SENSOR_NUM 100
 #define DEFAULT_SENSOR_NAME_SIZE 30
 #define TSENS_TZ "tsens_tz_sensor"
+#define CPU_SENSOR "cpu"
 int getmaxtemp(int *temp){
     char folders[MAX_SENSOR_NUM][DEFAULT_SENSOR_NAME_SIZE];
     char types[MAX_SENSOR_NUM][DEFAULT_SENSOR_NAME_SIZE];
@@ -102,11 +103,23 @@ int getmaxtemp(int *temp){
                 continue;
             }
             ctemp=ctemp/10;
-            if(*temp<ctemp)
-                *temp=ctemp;
-
             fclose(process);
         }
+        else if(!strncmp(CPU_SENSOR,types[i],strlen(CPU_SENSOR))){
+            //Locked the target
+            sprintf(cpath,"/sys/class/thermal/%s/temp",folders[i]);
+            process=fopen(cpath,"r");
+            if(process==NULL)
+                continue;
+            if(fscanf(process,"%d",&ctemp)==EOF) {
+                fclose(process);
+                continue;
+            }
+            ctemp=ctemp/1000;
+            fclose(process);
+        }
+        if(*temp<ctemp)
+            *temp=ctemp;
     }
     return 0;
 }
