@@ -78,7 +78,7 @@ int getmaxtemp(int *temp){
     //Read sensor folders
     while(fscanf(process,"%s",folders[num])!=EOF)
         num++;
-    fclose(process);
+    pclose(process);
 
     num=0;
     process=popen("cat /sys/class/thermal/thermal_zone*/type","r");
@@ -87,7 +87,7 @@ int getmaxtemp(int *temp){
     //Read sensor type
     while(fscanf(process,"%s",types[num])!=EOF)
         num++;
-    fclose(process);
+    pclose(process);
 
     //Looking for the target sensor
     for(int i=0;i<MAX_SENSOR_NUM;i++){
@@ -104,10 +104,10 @@ int getmaxtemp(int *temp){
             ctemp=ctemp/10;
             if(*temp<ctemp)
                 *temp=ctemp;
+
+            fclose(process);
         }
     }
-
-    fclose(process);
     return 0;
 }
 
