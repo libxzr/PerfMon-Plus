@@ -49,6 +49,14 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpubw
 
 /*
  * Class:     xzr_perfmon_JniTools
+ * Method:    getgpubw
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getgpubw
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     xzr_perfmon_JniTools
  * Method:    getm4m
  * Signature: ()I
  */

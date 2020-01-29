@@ -70,6 +70,11 @@ public class MainActivity extends Activity {
         }
         {
             TextView textView=new TextView(this);
+            textView.setText(getResources().getString(R.string.support_gpubw_mo)+Tools.bool2text(Support.support_gpubw,this));
+            main.addView(textView);
+        }
+        {
+            TextView textView=new TextView(this);
             textView.setText(getResources().getString(R.string.support_m4mfreq_mo)+Tools.bool2text(Support.support_m4m,this));
             main.addView(textView);
         }

@@ -45,6 +45,9 @@ public class SharedPreferencesUtil {
 
     static final String show_current="show_current";
     static final boolean show_current_default=true;
+
+    static final String show_gpubw="show_gpubw";
+    static final boolean show_gpubw_default=true;
     static void init(Context context){
         sharedPreferences=context.getSharedPreferences("main",0);
     }

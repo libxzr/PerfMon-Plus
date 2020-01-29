@@ -141,3 +141,13 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpunum
         return 0;
     return cpunum;
 }
+
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getgpubw
+        (JNIEnv *env, jclass jclass1){
+    int freq;
+
+    if(readfileint("/sys/class/devfreq/soc:qcom,gpubw/cur_freq",&freq))
+        return UNSUPPORTED;
+
+    return freq;
+}

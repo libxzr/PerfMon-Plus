@@ -9,6 +9,7 @@ public class JniTools {
     public static native int getadrenoload();
     public static native int getmincpubw();
     public static native int getcpubw();
+    public static native int getgpubw();
     public static native int getm4m();
     public static native int getcpuload(int cpu);
     public static native boolean checkcpuload();

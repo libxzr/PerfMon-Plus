@@ -10,6 +10,7 @@ class Support {
     static boolean support_temp;
     static boolean support_mem;
     static boolean support_current;
+    static boolean support_gpubw;
 
     static final int UNSUPPORTED=-1;
 
@@ -65,6 +66,12 @@ class Support {
             support_current=true;
         }
         else support_current=false;
+
+        if(JniTools.getgpubw()!=UNSUPPORTED) {
+            linen++;
+            support_gpubw=true;
+        }
+        else support_gpubw=false;
 
         return linen;
     }

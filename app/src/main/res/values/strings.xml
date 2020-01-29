@@ -42,4 +42,6 @@
     <string name="show_current">Show current</string>
     <string name="show_thermal">Show temp</string>
     <string name="show_mincpubw">Show mincpubw</string>
+    <string name="show_gpubw">Show gpubw</string>
+    <string name="support_gpubw_mo">"Support gpubw monitoring: "</string>
 </resources>
