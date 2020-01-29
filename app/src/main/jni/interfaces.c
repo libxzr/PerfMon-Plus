@@ -74,10 +74,10 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuload
         (JNIEnv *env, jclass jclass1, jint cpu) {
     int time1=0,time2=0,idle1=0,idle2=0;
     if(getCpuTime(cpu,&time1,&idle1))
-        return 0;
+        return UNSUPPORTED;
     usleep(pow(1*10,6));
     if(getCpuTime(cpu,&time2,&idle2))
-        return 0;
+        return UNSUPPORTED;
     return (int)((1-(((float)idle2-idle1)/(time2-time1)))*100);
 }
 
