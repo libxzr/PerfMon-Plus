@@ -11,6 +11,7 @@ class Support {
     static boolean support_mem;
     static boolean support_current;
     static boolean support_gpubw;
+    static boolean support_llcbw;
 
     static final int UNSUPPORTED=-1;
 
@@ -72,6 +73,12 @@ class Support {
             support_gpubw=true;
         }
         else support_gpubw=false;
+
+        if(JniTools.getllcbw()!=UNSUPPORTED) {
+            linen++;
+            support_llcbw=true;
+        }
+        else support_llcbw=false;
 
         return linen;
     }

@@ -14,6 +14,7 @@ public class RefreshingDateThread extends Thread {
     static int memusage;
     static int current;
     static int gpubw;
+    static int llcbw;
 
     static int delay;
     static boolean reverse_current_now;
@@ -38,6 +39,7 @@ public class RefreshingDateThread extends Thread {
                 memusage=JniTools.getmemusage();
                 current=JniTools.getcurrent();
                 gpubw=JniTools.getgpubw();
+                llcbw=JniTools.getllcbw();
                 if(reverse_current_now)
                     current=-current;
                 FloatingWindow.ui_refresher.sendEmptyMessage(0);

@@ -44,5 +44,7 @@
     <string name="show_mincpubw">显示mincpubw</string>
     <string name="show_gpubw">显示gpubw</string>
     <string name="support_gpubw_mo">支持gpubw频率监控：</string>
+    <string name="show_llcbw">显示system cache bus频率</string>
+    <string name="support_llcbw_mo">支持system cache bw监控：</string>
 
 </resources>

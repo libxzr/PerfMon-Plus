@@ -151,3 +151,11 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getgpubw
 
     return freq;
 }
+
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getllcbw
+        (JNIEnv *env, jclass jclass1){
+    int freq;
+    if(readfileint("/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/cur_freq",&freq))
+        return UNSUPPORTED;
+    return freq;
+}
