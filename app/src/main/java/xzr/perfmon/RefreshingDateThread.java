@@ -13,9 +13,12 @@ public class RefreshingDateThread extends Thread {
     static int maxtemp;
     static int memusage;
     static int current;
+
     static int delay;
+    static boolean reverse_current_now;
     public void run(){
         delay= SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.delay, SharedPreferencesUtil.default_delay);
+        reverse_current_now=SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.reverse_current,SharedPreferencesUtil.reverse_current_default);
         cpufreq=new int[cpunum];
         cpuload=new int[cpunum];
         cpuonline=new int[cpunum];
@@ -33,6 +36,8 @@ public class RefreshingDateThread extends Thread {
                 maxtemp=JniTools.getmaxtemp();
                 memusage=JniTools.getmemusage();
                 current=JniTools.getcurrent();
+                if(reverse_current_now)
+                    current=-current;
                 FloatingWindow.ui_refresher.sendEmptyMessage(0);
                 for (int i=0;i<cpunum;i++){
                     if(cpuonline[i]==1) {

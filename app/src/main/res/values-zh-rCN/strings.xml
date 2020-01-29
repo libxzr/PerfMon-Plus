@@ -29,5 +29,6 @@
     <string name="refresh_interval">刷新时间间隔(ms)</string>
     <string name="default_value">默认</string>
     <string name="interval_notice">* 刷新时间间隔过短将会造成额外的CPU负载</string>
+    <string name="reverse_current">反转电流读数</string>
 
 </resources>

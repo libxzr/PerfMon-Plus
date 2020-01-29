@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 class Settings{
@@ -66,6 +67,24 @@ class Settings{
             TextView textView=new TextView(context);
             linearLayout.addView(textView);
             textView.setText(R.string.interval_notice);
+        }
+        {
+            final Switch sw=new Switch(context);
+            linearLayout.addView(sw);
+            sw.setText(R.string.reverse_current);
+            if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.reverse_current,SharedPreferencesUtil.reverse_current_default))
+                sw.setChecked(true);
+            sw.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(sw.isChecked()) {
+                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.reverse_current,true).commit();
+                    }
+                    else{
+                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.reverse_current,false).commit();
+                    }
+                }
+            });
         }
 
         return linearLayout;
