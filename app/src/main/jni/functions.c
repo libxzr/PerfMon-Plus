@@ -18,7 +18,7 @@ int readfileint(const char *path,int *result){
 int getCpuTime(int cpu,int *fulltime,int *idletime){
     FILE *file;
     char cpustr[5];
-    char cache[10];
+    char cache[50];
     int num=0,c;
 
     sprintf(cpustr,"cpu%d",cpu);
