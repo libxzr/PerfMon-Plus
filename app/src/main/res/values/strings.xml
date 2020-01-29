@@ -46,4 +46,6 @@
     <string name="support_gpubw_mo">"Support gpubw monitoring: "</string>
     <string name="show_llcbw">Show system cache bus freq</string>
     <string name="support_llcbw_mo">"Support system cache bw monitoring: "</string>
+    <string name="window_width">Window width</string>
+    <string name="window_height">Window height</string>
 </resources>

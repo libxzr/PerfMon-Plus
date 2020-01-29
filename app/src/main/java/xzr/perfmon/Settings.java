@@ -344,7 +344,88 @@ class Settings{
                 });
             }
         }
+        {
+            LinearLayout line=new LinearLayout(context);
+            linearLayout.addView(line);
 
+            TextView textView=new TextView(context);
+            line.addView(textView);
+            textView.setText(R.string.window_width);
+            EditText editText=new EditText(context);
+            line.addView(editText);
+            editText.setHint(R.string.default_value);
+            int width=SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.width, SharedPreferencesUtil.default_width);
+            if (width!=-1)
+                editText.setText(width+"");
+            editText.setWidth(500);
+            editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    try{
+                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.width,Integer.parseInt(editable.toString())).commit();
+                    }
+                    catch (Exception e){
+                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.width).commit();
+                    }
+
+                }
+            });
+
+
+        }
+
+        {
+            LinearLayout line=new LinearLayout(context);
+            linearLayout.addView(line);
+
+            TextView textView=new TextView(context);
+            line.addView(textView);
+            textView.setText(R.string.window_height);
+
+            EditText editText=new EditText(context);
+            line.addView(editText);
+            editText.setHint(R.string.default_value);
+            int height=SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.height, SharedPreferencesUtil.default_height);
+            if (height!=-1)
+                editText.setText(height+"");
+            editText.setWidth(500);
+            editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    try{
+                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.height,Integer.parseInt(editable.toString())).commit();
+                    }
+                    catch (Exception e){
+                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.height).commit();
+                    }
+
+                }
+            });
+
+
+        }
         return linearLayout;
     }
 }
