@@ -54,7 +54,7 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpubw
     if(!readfileint("/sys/class/devfreq/soc:qcom,cpubw/cur_freq",&freq))
         return freq;
 
-    if(!readfileint("/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/cur_freq",&freq))
+    if(!readfileint("/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/cur_freq",&freq))
         return freq;
 
     return UNSUPPORTED;
