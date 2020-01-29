@@ -41,9 +41,11 @@ public class FloatingWindow extends Service {
     static TextView line[];
     static int linen;
     static Handler ui_refresher;
+    static float size_multiple_now;
 
     @SuppressLint("ClickableViewAccessibility")
     void init(){
+        size_multiple_now=SharedPreferencesUtil.sharedPreferences.getFloat(SharedPreferencesUtil.size_multiple,SharedPreferencesUtil.size_multiple_default);
         params=new WindowManager.LayoutParams();
         windowManager=(WindowManager)getApplication().getSystemService(Context.WINDOW_SERVICE);
         if(Build.VERSION.SDK_INT>=26){
@@ -59,9 +61,9 @@ public class FloatingWindow extends Service {
         params.x = 0;
         params.y = 0;
         if(Support.support_cpuload||Support.support_adrenofreq)
-            params.width=(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 145,getResources().getDisplayMetrics());
+            params.width=(int)((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 145,getResources().getDisplayMetrics())*size_multiple_now);
         else
-            params.width=(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 120,getResources().getDisplayMetrics());
+            params.width=(int)((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 120,getResources().getDisplayMetrics())*size_multiple_now);
         params.height = 300;
         main= new LinearLayout(this);
         main.setOrientation(LinearLayout.VERTICAL);
@@ -69,6 +71,7 @@ public class FloatingWindow extends Service {
         main.setPadding((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 5,getResources().getDisplayMetrics()),0,0,0);
         TextView close=new TextView(this);
         close.setText(R.string.close);
+        close.setTextSize(TypedValue.COMPLEX_UNIT_PX,close.getTextSize()*size_multiple_now);
         close.setTextColor(getResources().getColor(R.color.white));
         main.addView(close);
         close.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +120,7 @@ public class FloatingWindow extends Service {
         LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         line=new TextView[linen];
-        params.height=(linen+1)*(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20,getResources().getDisplayMetrics());;
+        params.height=(linen+1)*(int)(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20,getResources().getDisplayMetrics())*size_multiple_now);
         windowManager.updateViewLayout(main,params);
         ui_refresher=new Handler(new Handler.Callback() {
             @Override
@@ -172,6 +175,7 @@ public class FloatingWindow extends Service {
             line[i]=new TextView(this);
             line[i].setTextColor(getResources().getColor(R.color.white));
             line[i].setLayoutParams(layoutParams);
+            line[i].setTextSize(TypedValue.COMPLEX_UNIT_PX,line[i].getTextSize()*size_multiple_now);
             main.addView(line[i]);
         }
         windowManager.updateViewLayout(main,params);

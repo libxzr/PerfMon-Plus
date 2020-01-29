@@ -86,6 +86,43 @@ class Settings{
                 }
             });
         }
+        {
+            LinearLayout line=new LinearLayout(context);
+            linearLayout.addView(line);
+
+            TextView textView=new TextView(context);
+            line.addView(textView);
+            textView.setText(R.string.size_multiple);
+
+            EditText editText=new EditText(context);
+            line.addView(editText);
+            editText.setHint(R.string.default_value);
+            editText.setText(SharedPreferencesUtil.sharedPreferences.getFloat(SharedPreferencesUtil.size_multiple, SharedPreferencesUtil.size_multiple_default)+"");
+            editText.setWidth(500);
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    try{
+                        SharedPreferencesUtil.sharedPreferences.edit().putFloat(SharedPreferencesUtil.size_multiple,Float.parseFloat(editable.toString())).commit();
+                    }
+                    catch (Exception e){
+                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.size_multiple).commit();
+                    }
+                }
+            });
+
+
+        }
 
         return linearLayout;
     }

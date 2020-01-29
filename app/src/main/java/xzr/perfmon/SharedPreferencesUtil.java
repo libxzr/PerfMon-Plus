@@ -13,6 +13,9 @@ public class SharedPreferencesUtil {
     static final String reverse_current="reverse_current";
     static final boolean reverse_current_default=false;
 
+    static final String size_multiple="size_multiple";
+    static final float size_multiple_default=1;
+
     static void init(Context context){
         sharedPreferences=context.getSharedPreferences("main",0);
     }

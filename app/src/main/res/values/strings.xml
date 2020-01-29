@@ -30,4 +30,5 @@
     <string name="default_value">default</string>
     <string name="interval_notice">* Too short interval could lead to extra cpuload, making readings inaccurate</string>
     <string name="reverse_current">Reverse current readings</string>
+    <string name="size_multiple">Multiples of window size</string>
 </resources>

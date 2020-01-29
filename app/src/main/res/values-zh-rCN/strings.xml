@@ -30,5 +30,6 @@
     <string name="default_value">默认</string>
     <string name="interval_notice">* 刷新时间间隔过短将会造成额外的CPU负载</string>
     <string name="reverse_current">反转电流读数</string>
+    <string name="size_multiple">窗体放缩倍数</string>
 
 </resources>
