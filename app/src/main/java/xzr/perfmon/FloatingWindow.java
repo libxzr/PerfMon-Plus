@@ -62,45 +62,45 @@ public class FloatingWindow extends Service {
         size_multiple_now=SharedPreferencesUtil.sharedPreferences.getFloat(SharedPreferencesUtil.size_multiple,SharedPreferencesUtil.size_multiple_default);
         {
             show_cpufreq_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpufreq, SharedPreferencesUtil.show_cpufreq_default);
-            if (!show_cpufreq_now)
+            if (!show_cpufreq_now&&Support.support_cpufreq)
                 linen=linen-JniTools.getcpunum();
             show_cpuload_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpuload, SharedPreferencesUtil.show_cpuload_default);
 
             show_gpufreq_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpufreq, SharedPreferencesUtil.show_gpufreq_default);
-            if (!show_gpufreq_now)
+            if (!show_gpufreq_now&&Support.support_adrenofreq)
                 linen--;
             show_gpuload_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpuload, SharedPreferencesUtil.show_gpuload_default);
 
             show_cpubw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpubw, SharedPreferencesUtil.show_cpubw_default);
-            if (!show_cpubw_now)
+            if (!show_cpubw_now&&Support.support_cpubw)
                 linen--;
             
             show_mincpubw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mincpubw, SharedPreferencesUtil.show_mincpubw_default);
-            if (!show_mincpubw_now)
+            if (!show_mincpubw_now&& Support.support_mincpubw)
                 linen--;
 
             show_m4m_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_m4m, SharedPreferencesUtil.show_m4m_default);
-            if (!show_m4m_now)
+            if (!show_m4m_now&&Support.support_m4m)
                 linen--;
 
             show_thermal_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_thermal, SharedPreferencesUtil.show_thermal_default);
-            if (!show_thermal_now)
+            if (!show_thermal_now&&Support.support_temp)
                 linen--;
 
             show_mem_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mem, SharedPreferencesUtil.show_mem_default);
-            if (!show_mem_now)
+            if (!show_mem_now&&Support.support_mem)
                 linen--;
 
             show_current_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_current, SharedPreferencesUtil.show_current_default);
-            if (!show_current_now)
+            if (!show_current_now&&Support.support_current)
                 linen--;
 
             show_gpubw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpubw, SharedPreferencesUtil.show_gpubw_default);
-            if (!show_gpubw_now)
+            if (!show_gpubw_now&&Support.support_gpubw)
                 linen--;
             
             show_llcbw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_llcbw, SharedPreferencesUtil.show_llcbw_default);
-            if (!show_llcbw_now)
+            if (!show_llcbw_now&&Support.support_llcbw)
                 linen--;
         }
         params=new WindowManager.LayoutParams();
