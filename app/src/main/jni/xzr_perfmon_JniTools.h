@@ -103,6 +103,14 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmemusage
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcurrent
   (JNIEnv *, jclass);
 
+/*
+ * Class:     xzr_perfmon_JniTools
+ * Method:    getcpunum
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpunum
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

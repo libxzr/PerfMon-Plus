@@ -15,6 +15,15 @@ int readfileint(const char *path,int *result){
     return ret;
 }
 
+int readprocessint(const char *cmd,int *result){
+    FILE *process=popen(cmd,"r");
+    if (process==NULL)
+        return UNSUPPORTED;
+    fscanf(process,"%d",result);
+    pclose(process);
+    return 0;
+}
+
 int getCpuTime(int cpu,int *fulltime,int *idletime){
     FILE *file;
     char cpustr[5];
