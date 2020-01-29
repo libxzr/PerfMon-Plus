@@ -51,10 +51,13 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpubw
         (JNIEnv *env, jclass jclass1){
     int freq;
 
-    if(readfileint("/sys/class/devfreq/soc:qcom,cpubw/cur_freq",&freq))
-        return UNSUPPORTED;
+    if(!readfileint("/sys/class/devfreq/soc:qcom,cpubw/cur_freq",&freq))
+        return freq;
 
-    return freq;
+    if(!readfileint("/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/cur_freq",&freq))
+        return freq;
+
+    return UNSUPPORTED;
 }
 
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getm4m
