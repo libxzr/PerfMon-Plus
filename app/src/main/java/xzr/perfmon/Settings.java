@@ -123,6 +123,173 @@ class Settings{
 
 
         }
+        {
+            TextView textView=new TextView(context);
+            textView.setText(R.string.moni_ctl);
+            linearLayout.addView(textView);
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_cpufreq);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpufreq,SharedPreferencesUtil.show_cpufreq_default))
+                    sw.setChecked(true);
+                        sw.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if(sw.isChecked()) {
+                                    SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpufreq,true).commit();
+                                }
+                                else{
+                                    SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpufreq,false).commit();
+                                }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_cpuload);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpuload,SharedPreferencesUtil.show_cpuload_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpuload,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpuload,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_gpufreq);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpufreq,SharedPreferencesUtil.show_gpufreq_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpufreq,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpufreq,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_gpuload);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpuload,SharedPreferencesUtil.show_gpuload_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpuload,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpuload,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_cpubw);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpubw,SharedPreferencesUtil.show_cpubw_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpubw,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpubw,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_m4m);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_m4m,SharedPreferencesUtil.show_m4m_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_m4m,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_m4m,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_thermal);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_thermal,SharedPreferencesUtil.show_thermal_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_thermal,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_thermal,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_mem);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mem,SharedPreferencesUtil.show_mem_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mem,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mem,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_current);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_current,SharedPreferencesUtil.show_current_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_current,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_current,false).commit();
+                        }
+                    }
+                });
+            }
+        }
 
         return linearLayout;
     }

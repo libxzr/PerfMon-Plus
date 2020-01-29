@@ -43,9 +43,49 @@ public class FloatingWindow extends Service {
     static Handler ui_refresher;
     static float size_multiple_now;
 
+    static boolean show_cpufreq_now;
+    static boolean show_cpuload_now;
+    static boolean show_gpufreq_now;
+    static boolean show_gpuload_now;
+    static boolean show_cpubw_now;
+    static boolean show_m4m_now;
+    static boolean show_thermal_now;
+    static boolean show_mem_now;
+    static boolean show_current_now;
     @SuppressLint("ClickableViewAccessibility")
     void init(){
         size_multiple_now=SharedPreferencesUtil.sharedPreferences.getFloat(SharedPreferencesUtil.size_multiple,SharedPreferencesUtil.size_multiple_default);
+        {
+            show_cpufreq_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpufreq, SharedPreferencesUtil.show_cpufreq_default);
+            if (!show_cpufreq_now)
+                linen=linen-JniTools.getcpunum();
+            show_cpuload_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpuload, SharedPreferencesUtil.show_cpuload_default);
+
+            show_gpufreq_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpufreq, SharedPreferencesUtil.show_gpufreq_default);
+            if (!show_gpufreq_now)
+                linen--;
+            show_gpuload_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpuload, SharedPreferencesUtil.show_gpuload_default);
+
+            show_cpubw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpubw, SharedPreferencesUtil.show_cpubw_default);
+            if (!show_cpubw_now)
+                linen--;
+
+            show_m4m_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_m4m, SharedPreferencesUtil.show_m4m_default);
+            if (!show_m4m_now)
+                linen--;
+
+            show_thermal_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_thermal, SharedPreferencesUtil.show_thermal_default);
+            if (!show_thermal_now)
+                linen--;
+
+            show_mem_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mem, SharedPreferencesUtil.show_mem_default);
+            if (!show_mem_now)
+                linen--;
+
+            show_current_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_current, SharedPreferencesUtil.show_current_default);
+            if (!show_current_now)
+                linen--;
+        }
         params=new WindowManager.LayoutParams();
         windowManager=(WindowManager)getApplication().getSystemService(Context.WINDOW_SERVICE);
         if(Build.VERSION.SDK_INT>=26){
@@ -60,7 +100,7 @@ public class FloatingWindow extends Service {
         params.gravity = Gravity.LEFT | Gravity.TOP;
         params.x = 0;
         params.y = 0;
-        if(Support.support_cpuload||Support.support_adrenofreq)
+        if((Support.support_cpuload&&show_cpuload_now)||(Support.support_adrenofreq&&show_gpuload_now))
             params.width=(int)((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 145,getResources().getDisplayMetrics())*size_multiple_now);
         else
             params.width=(int)((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 120,getResources().getDisplayMetrics())*size_multiple_now);
@@ -126,12 +166,12 @@ public class FloatingWindow extends Service {
             @Override
             public boolean handleMessage(Message message) {
                 int i=0;
-                if(Support.support_cpufreq) {
+                if(Support.support_cpufreq&&show_cpufreq_now) {
                     for (i = 0; i < RefreshingDateThread.cpunum; i++) {
                         String text = "cpu" + i + " ";
                         if (cpuonline[i] == 1) {
                             text = text + cpufreq[i] + " Mhz";
-                            if (Support.support_cpuload)
+                            if (Support.support_cpuload&&show_cpuload_now)
                                 text = text + Tools.format_ify_add_blank(cpufreq[i] + "") + cpuload[i] + "%";
                         } else {
                             text = text +getResources().getString(R.string.offline);
@@ -139,31 +179,34 @@ public class FloatingWindow extends Service {
                         line[i].setText(text);
                     }
                 }
-                if(Support.support_adrenofreq) {
-                    line[i].setText("gpu0 " + adrenofreq + " Mhz"+Tools.format_ify_add_blank(adrenofreq+"") + adrenoload + "%");
+                if(Support.support_adrenofreq&&show_gpufreq_now) {
+                    if(show_gpuload_now)
+                        line[i].setText("gpu0 " + adrenofreq + " Mhz"+Tools.format_ify_add_blank(adrenofreq+"") + adrenoload + "%");
+                    else
+                        line[i].setText("gpu0 " + adrenofreq + " Mhz"+Tools.format_ify_add_blank(adrenofreq+""));
                     i++;
                 }
                 if (Support.support_mincpubw) {
                     line[i].setText("mincpubw " + mincpubw);
                     i++;
                 }
-                if (Support.support_cpubw) {
+                if (Support.support_cpubw&&show_cpubw_now) {
                     line[i].setText("cpubw " + cpubw);
                     i++;
                 }
-                if (Support.support_m4m) {
+                if (Support.support_m4m&show_m4m_now) {
                     line[i].setText("m4m " + m4m+" Mhz");
                     i++;
                 }
-                if (Support.support_temp) {
+                if (Support.support_temp&&show_thermal_now) {
                     line[i].setText(getResources().getString(R.string.temp) + maxtemp+" ℃");
                     i++;
                 }
-                if (Support.support_mem) {
+                if (Support.support_mem&&show_mem_now) {
                     line[i].setText(getResources().getString(R.string.mem) + memusage+"%");
                     i++;
                 }
-                if (Support.support_current) {
+                if (Support.support_current&&show_current_now) {
                     line[i].setText(getResources().getString(R.string.current)+ current+" mA");
                     i++;
                 }

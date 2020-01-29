@@ -31,5 +31,15 @@
     <string name="interval_notice">* 刷新时间间隔过短将会造成额外的CPU负载</string>
     <string name="reverse_current">反转电流读数</string>
     <string name="size_multiple">窗体放缩倍数</string>
+    <string name="moni_ctl">监控控制</string>
+    <string name="show_cpufreq">显示cpu频率</string>
+    <string name="show_cpubw">显示cpubw频率</string>
+    <string name="show_cpuload">显示cpu负载</string>
+    <string name="show_current">显示电流信息</string>
+    <string name="show_gpufreq">显示gpu频率</string>
+    <string name="show_gpuload">显示gpu负载</string>
+    <string name="show_m4m">显示m4m频率</string>
+    <string name="show_mem">显示内存使用率</string>
+    <string name="show_thermal">显示温度</string>
 
 </resources>

@@ -31,4 +31,14 @@
     <string name="interval_notice">* Too short interval could lead to extra cpuload, making readings inaccurate</string>
     <string name="reverse_current">Reverse current readings</string>
     <string name="size_multiple">Multiples of window size</string>
+    <string name="moni_ctl">Monitor control</string>
+    <string name="show_cpufreq">Show cpufreq</string>
+    <string name="show_cpuload">Show cpuload</string>
+    <string name="show_gpufreq">Show gpufreq</string>
+    <string name="show_gpuload">Show gpuload</string>
+    <string name="show_m4m">Show m4m freq</string>
+    <string name="show_cpubw">Show cpubw</string>
+    <string name="show_mem">Show RAM usage</string>
+    <string name="show_current">Show current</string>
+    <string name="show_thermal">Show temp</string>
 </resources>
