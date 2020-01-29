@@ -48,6 +48,7 @@ public class FloatingWindow extends Service {
     static boolean show_gpufreq_now;
     static boolean show_gpuload_now;
     static boolean show_cpubw_now;
+    static boolean show_mincpubw_now;
     static boolean show_m4m_now;
     static boolean show_thermal_now;
     static boolean show_mem_now;
@@ -68,6 +69,10 @@ public class FloatingWindow extends Service {
 
             show_cpubw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpubw, SharedPreferencesUtil.show_cpubw_default);
             if (!show_cpubw_now)
+                linen--;
+            
+            show_mincpubw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mincpubw, SharedPreferencesUtil.show_mincpubw_default);
+            if (!show_mincpubw_now)
                 linen--;
 
             show_m4m_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_m4m, SharedPreferencesUtil.show_m4m_default);
@@ -186,7 +191,7 @@ public class FloatingWindow extends Service {
                         line[i].setText("gpu0 " + adrenofreq + " Mhz"+Tools.format_ify_add_blank(adrenofreq+""));
                     i++;
                 }
-                if (Support.support_mincpubw) {
+                if (Support.support_mincpubw&&show_mincpubw_now) {
                     line[i].setText("mincpubw " + mincpubw);
                     i++;
                 }

@@ -30,13 +30,11 @@ class Support {
         }
         else support_adrenofreq=false;
 
-        /*
         if(JniTools.getmincpubw()!=UNSUPPORTED) {
             linen++;
             support_mincpubw=true;
         }
         else support_mincpubw=false;
-        */
 
         if(JniTools.getcpubw()!=UNSUPPORTED) {
             linen++;

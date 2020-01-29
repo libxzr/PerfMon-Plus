@@ -220,6 +220,24 @@ class Settings{
             {
                 final Switch sw=new Switch(context);
                 linearLayout.addView(sw);
+                sw.setText(R.string.show_mincpubw);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mincpubw,SharedPreferencesUtil.show_mincpubw_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mincpubw,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mincpubw,false).commit();
+                        }
+                    }
+                });
+            }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
                 sw.setText(R.string.show_m4m);
                 if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_m4m,SharedPreferencesUtil.show_m4m_default))
                     sw.setChecked(true);

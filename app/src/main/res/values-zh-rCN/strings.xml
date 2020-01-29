@@ -41,5 +41,6 @@
     <string name="show_m4m">显示m4m频率</string>
     <string name="show_mem">显示内存使用率</string>
     <string name="show_thermal">显示温度</string>
+    <string name="show_mincpubw">显示mincpubw</string>
 
 </resources>
