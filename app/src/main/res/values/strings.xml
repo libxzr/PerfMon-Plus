@@ -26,4 +26,7 @@
     <string name="mem">"mem "</string>
     <string name="current">"current "</string>
     <string name="close">Close</string>
+    <string name="refresh_interval">Refresh interval (ms)</string>
+    <string name="default_value">default</string>
+    <string name="interval_notice">* Too short interval could lead to extra cpuload, making readings inaccurate</string>
 </resources>

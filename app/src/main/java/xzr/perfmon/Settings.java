@@ -15,7 +15,7 @@ class Settings{
     static void creatDialog(Context context){
         dialog=new AlertDialog.Builder(context)
                 .setView(settingsView(context))
-                .setTitle("设置")
+                .setTitle(R.string.settings)
                 .create();
         dialog.show();
     }
@@ -30,11 +30,11 @@ class Settings{
 
             TextView textView=new TextView(context);
             line.addView(textView);
-            textView.setText("刷新时间间隔");
+            textView.setText(R.string.refresh_interval);
 
             EditText editText=new EditText(context);
             line.addView(editText);
-            editText.setHint("默认");
+            editText.setHint(R.string.default_value);
             editText.setText(SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.delay, SharedPreferencesUtil.default_delay)+"");
             editText.setWidth(500);
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -65,7 +65,7 @@ class Settings{
         {
             TextView textView=new TextView(context);
             linearLayout.addView(textView);
-            textView.setText("* 刷新时间间隔过短将会造成额外的CPU负载");
+            textView.setText(R.string.interval_notice);
         }
 
         return linearLayout;

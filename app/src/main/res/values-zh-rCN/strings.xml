@@ -26,5 +26,8 @@
     <string name="mem">"内存 "</string>
     <string name="current">"电流 "</string>
     <string name="close">关闭</string>
+    <string name="refresh_interval">刷新时间间隔(ms)</string>
+    <string name="default_value">默认</string>
+    <string name="interval_notice">* 刷新时间间隔过短将会造成额外的CPU负载</string>
 
 </resources>
