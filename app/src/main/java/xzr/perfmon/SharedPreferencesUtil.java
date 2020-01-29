@@ -2,7 +2,6 @@ package xzr.perfmon;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.TypedValue;
 
 public class SharedPreferencesUtil {
     static SharedPreferences sharedPreferences;

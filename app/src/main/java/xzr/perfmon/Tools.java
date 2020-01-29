@@ -2,9 +2,6 @@ package xzr.perfmon;
 
 import android.content.Context;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 class Tools {
     static String format_ify_add_blank(String in){
         String s="";
