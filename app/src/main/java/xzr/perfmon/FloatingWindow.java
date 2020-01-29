@@ -58,7 +58,10 @@ public class FloatingWindow extends Service {
         params.gravity = Gravity.LEFT | Gravity.TOP;
         params.x = 0;
         params.y = 0;
-        params.width = SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.width,SharedPreferencesUtil.default_width);
+        if(Support.support_cpuload||Support.support_adrenofreq)
+            params.width=(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 145,getResources().getDisplayMetrics());
+        else
+            params.width=(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 120,getResources().getDisplayMetrics());
         params.height = 300;
         main= new LinearLayout(this);
         main.setOrientation(LinearLayout.VERTICAL);
@@ -114,10 +117,7 @@ public class FloatingWindow extends Service {
         LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         line=new TextView[linen];
-        if (SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.height,SharedPreferencesUtil.default_height)!=SharedPreferencesUtil.default_height)
-            params.height=SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.height,SharedPreferencesUtil.default_height);
-        else
-            params.height=(linen+1)*(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20,getResources().getDisplayMetrics());;
+        params.height=(linen+1)*(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20,getResources().getDisplayMetrics());;
         windowManager.updateViewLayout(main,params);
         ui_refresher=new Handler(new Handler.Callback() {
             @Override
