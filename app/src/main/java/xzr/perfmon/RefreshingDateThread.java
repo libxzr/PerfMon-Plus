@@ -30,31 +30,31 @@ public class RefreshingDateThread extends Thread {
                     if(cpuonline[i]==1&&FloatingWindow.show_cpufreq_now)
                     cpufreq[i]=JniTools.getcpufreq(i);
                 }
-                if(FloatingWindow.show_gpufreq_now)
+                if(FloatingWindow.show_gpufreq_now&&Support.support_adrenofreq)
                     adrenofreq=JniTools.getadrenofreq();
-                if(FloatingWindow.show_gpuload_now)
+                if(FloatingWindow.show_gpuload_now&&Support.support_adrenofreq)
                     adrenoload=JniTools.getadrenoload();
-                if(FloatingWindow.show_mincpubw_now)
+                if(FloatingWindow.show_mincpubw_now&&Support.support_mincpubw)
                     mincpubw=JniTools.getmincpubw();
-                if(FloatingWindow.show_cpubw_now)
+                if(FloatingWindow.show_cpubw_now&&Support.support_cpubw)
                     cpubw=JniTools.getcpubw();
-                if(FloatingWindow.show_m4m_now)
+                if(FloatingWindow.show_m4m_now&&Support.support_m4m)
                     m4m=JniTools.getm4m();
-                if(FloatingWindow.show_thermal_now)
+                if(FloatingWindow.show_thermal_now&&Support.support_temp)
                     maxtemp=JniTools.getmaxtemp();
-                if(FloatingWindow.show_mem_now)
+                if(FloatingWindow.show_mem_now&&Support.support_mem)
                     memusage=JniTools.getmemusage();
-                if(FloatingWindow.show_current_now)
+                if(FloatingWindow.show_current_now&&Support.support_current)
                     current=JniTools.getcurrent();
-                if(FloatingWindow.show_gpubw_now)
+                if(FloatingWindow.show_gpubw_now&&Support.support_gpubw)
                     gpubw=JniTools.getgpubw();
-                if(FloatingWindow.show_llcbw_now)
+                if(FloatingWindow.show_llcbw_now&&Support.support_llcbw)
                     llcbw=JniTools.getllcbw();
                 if(reverse_current_now)
                     current=-current;
                 FloatingWindow.ui_refresher.sendEmptyMessage(0);
                 for (int i=0;i<cpunum;i++){
-                    if(cpuonline[i]==1&&FloatingWindow.show_cpuload_now) {
+                    if(cpuonline[i]==1&&FloatingWindow.show_cpuload_now&&Support.support_cpuload) {
                         final int ii=i;
                         new Thread() {
                             public void run() {
