@@ -75,7 +75,7 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuload
     int time1=0,time2=0,idle1=0,idle2=0;
     if(getCpuTime(cpu,&time1,&idle1))
         return 0;
-    usleep(pow(10,6));
+    usleep(pow(1*10,6));
     if(getCpuTime(cpu,&time2,&idle2))
         return 0;
     return (int)((1-(((float)idle2-idle1)/(time2-time1)))*100);
@@ -121,7 +121,7 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmemusage
     if(getmeminfo("MemAvailable",&available))
         return UNSUPPORTED;
 
-    return (1-(float)available/total)*100;
+    return (int)((1-(float)available/total)*100);
 }
 
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcurrent

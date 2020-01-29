@@ -7,12 +7,11 @@
 
 int readfileint(const char *path,int *result){
     FILE *freqfile=fopen(path,"r");
-    int ret=0;
     if (freqfile==NULL)
         return UNSUPPORTED;
     fscanf(freqfile,"%d",result);
     fclose(freqfile);
-    return ret;
+    return 0;
 }
 
 int readprocessint(const char *cmd,int *result){
@@ -35,7 +34,7 @@ int getCpuTime(int cpu,int *fulltime,int *idletime){
     if (file==NULL)
         return UNSUPPORTED;
 
-    //Get target point
+    //Get to the target point
     while (1){
         if(fscanf(file,"%s",cache)==EOF) {
             fclose(file);
