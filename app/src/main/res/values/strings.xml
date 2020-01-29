@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">PerfMon+</string>
+    <string name="please_close_app_first">Please close the monitor first</string>
+    <string name="support_cpufreq_mo">"Support cpufreq monitoring: "</string>
+    <string name="support_cpuload_mo">"Support cpuload monitoring: "</string>
+    <string name="support_gpufreq_mo">"Support gpufreq monitoring: "</string>
+    <string name="support_gpuload_mo">"Support gpuload monitoring: "</string>
+    <string name="support_cpubw_mo">"Support cpubw monitoring: "</string>
+    <string name="support_m4mfreq_mo">"Support m4mfreq monitoring: "</string>
+    <string name="support_thermal_mo">"Support thermal monitoring: "</string>
+    <string name="support_mem_mo">"Support RAM monitoring: "</string>
+    <string name="support_current_mo">"Support current monitoring: "</string>
+    <string name="Unsupport_reason">* When it shows unsupported, it means either your kernel does not support this feature or your enforced SELinux stopped it from reading datas.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="show_floatingwindow">Show monitor</string>
+    <string name="settings">Settings</string>
+    <string name="permissive_selinux">Permissive SELinux (ROOT)</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="permissive_done">Succeed in changing SElinux mode, please re-open the app</string>
+    <string name="permissive_selinux_description">* Watch out ! Permissiving SELinux may cause system crash on some devices</string>
+    <string name="visit_github">"Visit Github "</string>
+    <string name="visit_coolapk">| Visit Coolapk</string>
+    <string name="offline">offline</string>
+    <string name="temp">"temp "</string>
+    <string name="mem">"mem "</string>
+    <string name="current">"current "</string>
+    <string name="close">Close</string>
 </resources>

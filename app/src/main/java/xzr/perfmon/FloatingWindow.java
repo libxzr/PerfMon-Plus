@@ -65,7 +65,7 @@ public class FloatingWindow extends Service {
         main.setBackgroundColor(getResources().getColor(R.color.floating_window_backgrouns));
         main.setPadding((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 5,getResources().getDisplayMetrics()),0,0,0);
         TextView close=new TextView(this);
-        close.setText("关闭");
+        close.setText(R.string.close);
         close.setTextColor(getResources().getColor(R.color.white));
         main.addView(close);
         close.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +131,7 @@ public class FloatingWindow extends Service {
                             if (Support.support_cpuload)
                                 text = text + Tools.format_ify_add_blank(cpufreq[i] + "") + cpuload[i] + "%";
                         } else {
-                            text = text + "离线";
+                            text = text +getResources().getString(R.string.offline);
                         }
                         line[i].setText(text);
                     }
@@ -153,15 +153,15 @@ public class FloatingWindow extends Service {
                     i++;
                 }
                 if (Support.support_temp) {
-                    line[i].setText("温度 " + maxtemp+" ℃");
+                    line[i].setText(getResources().getString(R.string.temp) + maxtemp+" ℃");
                     i++;
                 }
                 if (Support.support_mem) {
-                    line[i].setText("内存 " + memusage+"%");
+                    line[i].setText(getResources().getString(R.string.mem) + memusage+"%");
                     i++;
                 }
                 if (Support.support_current) {
-                    line[i].setText("电流 " + current+" mA");
+                    line[i].setText(getResources().getString(R.string.current)+ current+" mA");
                     i++;
                 }
                 return false;

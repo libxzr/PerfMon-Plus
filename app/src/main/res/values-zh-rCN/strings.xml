@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">PerfMon+</string>
+    <string name="please_close_app_first">请先关闭悬浮窗 再打开软件</string>
+    <string name="support_cpufreq_mo">支持cpu频率监控：</string>
+    <string name="support_cpuload_mo">支持cpu负载监控：</string>
+    <string name="support_cpubw_mo">支持cpubw频率监控：</string>
+    <string name="support_current_mo">支持电流监控：</string>
+    <string name="support_gpufreq_mo">支持gpu频率监控：</string>
+    <string name="support_gpuload_mo">支持gpu负载监控：</string>
+    <string name="support_m4mfreq_mo">支持m4m频率监控：</string>
+    <string name="support_thermal_mo">支持温度监控：</string>
+    <string name="support_mem_mo">支持内存监控：</string>
+    <string name="Unsupport_reason">* 不支持的项目可能是你的设备真的不支持，也有可能是因为SELinux的阻挠。</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="show_floatingwindow">打开悬浮窗</string>
+    <string name="settings">设置</string>
+    <string name="permissive_selinux">关闭SELinux (ROOT)</string>
+    <string name="permission_denied">没有ROOT权限</string>
+    <string name="permissive_done">执行完毕 请重新打开软件</string>
+    <string name="permissive_selinux_description">* 并不是真正的关闭SELinux 仅仅只是make it permissive\n* 此操作可能在一些设备上诱发崩溃\n</string>
+    <string name="visit_github">"访问Github "</string>
+    <string name="visit_coolapk">| 访问酷安（给个五星好评吧）</string>
+    <string name="offline">离线</string>
+    <string name="temp">"温度 "</string>
+    <string name="mem">"内存 "</string>
+    <string name="current">"电流 "</string>
+    <string name="close">关闭</string>
+
+</resources>

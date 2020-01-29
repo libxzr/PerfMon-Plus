@@ -1,5 +1,7 @@
 package xzr.perfmon;
 
+import android.content.Context;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -32,10 +34,10 @@ class Tools {
         }
         return s;
     }
-    static String bool2text(boolean bool){
+    static String bool2text(boolean bool, Context context){
         if(bool){
-            return "是";
+            return context.getResources().getString(R.string.yes);
         }
-        return "否";
+        return  context.getResources().getString(R.string.no);
     }
 }
