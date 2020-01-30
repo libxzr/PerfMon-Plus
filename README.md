@@ -1,10 +1,19 @@
-# PerfMon+ —简易性能监视器
-#### 支持内容
-* CPU频率监控
-* CPU负载监控
-* GPU频率监控
-* GPU负载监控
-* CPUBW频率监控
-* M4M频率监控
+# <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/app/src/main/res/drawable/icon.png" width="70" height="70" /> PerfMon+ 
+A simple performance monitor for android
+### What it can do?
+* cpufreq monitoring
+* cpuload monitoring
+* gpufreq monitoring
+* gpuload monitoring
+* cpubw freq monitoring
+* mincpubw monitoring
+* m4m cache freq monitoring
+* system cache (llc) freq monitoring
+* memory usage monitoring
+* current monitoring
 
-### Any PR is welcomed
+### Screenshots
+<img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/1.jpg" width="360" height="640" /> <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/2.jpg" width="360" height="640" />
+<img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/3.jpg" width="360" height="640" /> <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/4.jpg" width="360" height="640" />
+
+### Any star, fork, PR is welcomed
