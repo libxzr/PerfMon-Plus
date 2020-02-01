@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -22,7 +23,11 @@ class Settings{
     }
 
     private static View settingsView(Context context){
+        ScrollView scrollView=new ScrollView(context);
+
+
         LinearLayout linearLayout=new LinearLayout(context);
+        scrollView.addView(linearLayout);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
         {
@@ -444,6 +449,6 @@ class Settings{
 
 
         }
-        return linearLayout;
+        return scrollView;
     }
 }
