@@ -164,3 +164,16 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getllcbw
 
     return UNSUPPORTED;
 }
+
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getfps
+        (JNIEnv *env, jclass jclass1){
+    int fps;
+
+    if(!readfileint("/sys/devices/virtual/graphics/fb0/measured_fps",&fps))
+        return fps;
+
+    if(!readprocessint("cat /sys/class/drm/sde-crtc-0/measured_fps | awk '{print $2}'",&fps))
+        return fps;
+
+    return UNSUPPORTED;
+}

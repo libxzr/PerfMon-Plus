@@ -48,5 +48,7 @@
     <string name="support_llcbw_mo">支持system cache bw监控：</string>
     <string name="window_width">窗体宽度</string>
     <string name="window_height">窗体高度</string>
+    <string name="show_fps">显示fps</string>
+    <string name="support_fps_mo">支持fps监控：</string>
 
 </resources>

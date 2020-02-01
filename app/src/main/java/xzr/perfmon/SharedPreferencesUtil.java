@@ -56,6 +56,10 @@ public class SharedPreferencesUtil {
 
     static final String show_llcbw="show_llcbw";
     static final boolean show_llcbw_default=true;
+
+    static final String show_fps="show_fps";
+    static final boolean show_fps_default=true;
+    
     static void init(Context context){
         sharedPreferences=context.getSharedPreferences("main",0);
     }

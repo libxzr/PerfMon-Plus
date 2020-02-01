@@ -48,4 +48,6 @@
     <string name="support_llcbw_mo">"Support system cache bw monitoring: "</string>
     <string name="window_width">Window width</string>
     <string name="window_height">Window height</string>
+    <string name="show_fps">Show fps</string>
+    <string name="support_fps_mo">"Support fps monitoring: "</string>
 </resources>

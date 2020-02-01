@@ -127,6 +127,14 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcurrent
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpunum
   (JNIEnv *, jclass);
 
+/*
+ * Class:     xzr_perfmon_JniTools
+ * Method:    getfps
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getfps
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

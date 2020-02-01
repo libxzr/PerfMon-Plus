@@ -19,4 +19,5 @@ public class JniTools {
     public static native int getmemusage();
     public static native int getcurrent();
     public static native int getcpunum();
+    public static native int getfps();
 }

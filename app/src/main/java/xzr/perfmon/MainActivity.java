@@ -100,6 +100,11 @@ public class MainActivity extends Activity {
         }
         {
             TextView textView=new TextView(this);
+            textView.setText(getResources().getString(R.string.support_fps_mo)+Tools.bool2text(Support.support_fps,this));
+            main.addView(textView);
+        }
+        {
+            TextView textView=new TextView(this);
             textView.setText(R.string.Unsupport_reason);
             main.addView(textView);
         }

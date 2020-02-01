@@ -15,6 +15,7 @@ public class RefreshingDateThread extends Thread {
     static int current;
     static int gpubw;
     static int llcbw;
+    static int fps;
 
     static int delay;
     static boolean reverse_current_now;
@@ -50,6 +51,8 @@ public class RefreshingDateThread extends Thread {
                     gpubw=JniTools.getgpubw();
                 if(FloatingWindow.show_llcbw_now&&Support.support_llcbw)
                     llcbw=JniTools.getllcbw();
+            if(FloatingWindow.show_fps_now&&Support.support_fps)
+                fps=JniTools.getfps();
                 if(reverse_current_now)
                     current=-current;
                 FloatingWindow.ui_refresher.sendEmptyMessage(0);

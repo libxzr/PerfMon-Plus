@@ -12,6 +12,7 @@ class Support {
     static boolean support_current;
     static boolean support_gpubw;
     static boolean support_llcbw;
+    static boolean support_fps;
 
     static final int UNSUPPORTED=-1;
 
@@ -79,6 +80,12 @@ class Support {
             support_llcbw=true;
         }
         else support_llcbw=false;
+
+        if(JniTools.getfps()!=UNSUPPORTED) {
+            linen++;
+            support_fps=true;
+        }
+        else support_fps=false;
 
         return linen;
     }

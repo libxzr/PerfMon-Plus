@@ -26,6 +26,7 @@ import static xzr.perfmon.RefreshingDateThread.cpufreq;
 import static xzr.perfmon.RefreshingDateThread.cpuload;
 import static xzr.perfmon.RefreshingDateThread.cpuonline;
 import static xzr.perfmon.RefreshingDateThread.current;
+import static xzr.perfmon.RefreshingDateThread.fps;
 import static xzr.perfmon.RefreshingDateThread.gpubw;
 import static xzr.perfmon.RefreshingDateThread.llcbw;
 import static xzr.perfmon.RefreshingDateThread.m4m;
@@ -57,6 +58,8 @@ public class FloatingWindow extends Service {
     static boolean show_current_now;
     static boolean show_gpubw_now;
     static boolean show_llcbw_now;
+    static boolean show_fps_now;
+    
     @SuppressLint("ClickableViewAccessibility")
     void init(){
         size_multiple_now=SharedPreferencesUtil.sharedPreferences.getFloat(SharedPreferencesUtil.size_multiple,SharedPreferencesUtil.size_multiple_default);
@@ -101,6 +104,10 @@ public class FloatingWindow extends Service {
             
             show_llcbw_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_llcbw, SharedPreferencesUtil.show_llcbw_default);
             if (!show_llcbw_now&&Support.support_llcbw)
+                linen--;
+
+            show_fps_now = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_fps, SharedPreferencesUtil.show_fps_default);
+            if (!show_fps_now&&Support.support_fps)
                 linen--;
         }
         params=new WindowManager.LayoutParams();
@@ -240,6 +247,10 @@ public class FloatingWindow extends Service {
                 }
                 if (Support.support_current&&show_current_now) {
                     line[i].setText(getResources().getString(R.string.current)+ current+" mA");
+                    i++;
+                }
+                if (Support.support_fps&&show_fps_now) {
+                    line[i].setText("fps " + fps);
                     i++;
                 }
                 return false;

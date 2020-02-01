@@ -343,6 +343,24 @@ class Settings{
                     }
                 });
             }
+            {
+                final Switch sw=new Switch(context);
+                linearLayout.addView(sw);
+                sw.setText(R.string.show_fps);
+                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_fps,SharedPreferencesUtil.show_fps_default))
+                    sw.setChecked(true);
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_fps,true).commit();
+                        }
+                        else{
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_fps,false).commit();
+                        }
+                    }
+                });
+            }
         }
         {
             LinearLayout line=new LinearLayout(context);
