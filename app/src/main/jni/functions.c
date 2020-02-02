@@ -14,11 +14,29 @@ int readfileint(const char *path,int *result){
     return 0;
 }
 
+int readfilestr(const char *path,char *result){
+    FILE *freqfile=fopen(path,"r");
+    if (freqfile==NULL)
+        return UNSUPPORTED;
+    fscanf(freqfile,"%s",result);
+    fclose(freqfile);
+    return 0;
+}
+
 int readprocessint(const char *cmd,int *result){
     FILE *process=popen(cmd,"r");
     if (process==NULL)
         return UNSUPPORTED;
     fscanf(process,"%d",result);
+    pclose(process);
+    return 0;
+}
+
+int readprocessstr(const char *cmd,char *result){
+    FILE *process=popen(cmd,"r");
+    if (process==NULL)
+        return UNSUPPORTED;
+    fscanf(process,"%s",result);
     pclose(process);
     return 0;
 }

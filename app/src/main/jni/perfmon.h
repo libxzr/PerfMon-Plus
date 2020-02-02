@@ -11,9 +11,11 @@
 #define NULLTEMP (-233)
 
 int readfileint(const char *from,int *to);
+int readfilestr(const char *from,char *to);
 int getCpuTime(int cpu,int *fulltime,int *idletime);
 int getmaxtemp(int *temp);
 int getmeminfo(char name[],int *data);
 int readprocessint(const char *cmd,int *result);
+int readprocessstr(const char *cmd,char *result);
 
 #endif //PERFMON_PERFMON_H
