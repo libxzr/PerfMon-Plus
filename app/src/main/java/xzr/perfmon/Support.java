@@ -81,7 +81,7 @@ class Support {
         }
         else support_llcbw=false;
 
-        if(JniTools.getfps()!=UNSUPPORTED) {
+        if(!JniTools.getfps().equals("")) {
             linen++;
             support_fps=true;
         }

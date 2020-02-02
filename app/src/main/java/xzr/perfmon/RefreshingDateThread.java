@@ -15,7 +15,7 @@ public class RefreshingDateThread extends Thread {
     static int current;
     static int gpubw;
     static int llcbw;
-    static int fps;
+    static String fps;
 
     static int delay;
     static boolean reverse_current_now;
