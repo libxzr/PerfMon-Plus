@@ -9,6 +9,7 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,14 +19,13 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
 
 public class MainActivity extends Activity {
-    LinearLayout main;
+    ScrollView mainView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        main=new LinearLayout(this);
-        main.setOrientation(LinearLayout.VERTICAL);
-        setContentView(main);
+        mainView=new ScrollView(this);
+        setContentView(mainView);
 
         if(!FloatingWindow.do_exit){
             Toast.makeText(MainActivity.this,getResources().getString(R.string.please_close_app_first),Toast.LENGTH_SHORT).show();
@@ -43,6 +43,9 @@ public class MainActivity extends Activity {
     }
 
     void addview(){
+        LinearLayout main=new LinearLayout(this);
+        main.setOrientation(LinearLayout.VERTICAL);
+        mainView.addView(main);
         {
             TextView textView=new TextView(this);
             textView.setText(getResources().getString(R.string.support_cpufreq_mo)+Tools.bool2text(Support.support_cpufreq,this));
