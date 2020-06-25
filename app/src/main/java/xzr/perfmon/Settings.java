@@ -2,6 +2,7 @@ package xzr.perfmon;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -22,13 +23,42 @@ class Settings{
         dialog.show();
     }
 
-    private static View settingsView(Context context){
+    private static View settingsView(final Context context){
         ScrollView scrollView=new ScrollView(context);
 
 
         LinearLayout linearLayout=new LinearLayout(context);
         scrollView.addView(linearLayout);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        {
+            final Switch sw=new Switch(context);
+            linearLayout.addView(sw);
+            sw.setText(R.string.skip_first_screen_str);
+            if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.skip_first_screen,SharedPreferencesUtil.default_skip_first_screen))
+                sw.setChecked(true);
+            sw.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(sw.isChecked()) {
+                        new AlertDialog.Builder(context)
+                                .setTitle(R.string.notice)
+                                .setMessage(R.string.skip_first_screen_str2)
+                                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.skip_first_screen,true).commit();
+                                    }
+                                })
+                                .setNegativeButton(R.string.cancel, null)
+                                .create().show();
+                    }
+                    else{
+                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.skip_first_screen,false).commit();
+                    }
+                }
+            });
+        }
 
         {
             LinearLayout line=new LinearLayout(context);

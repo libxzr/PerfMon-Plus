@@ -38,6 +38,12 @@ public class MainActivity extends Activity {
         FloatingWindow.linen=Support.CheckSupport();
         SharedPreferencesUtil.init(this);
 
+        if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.skip_first_screen,SharedPreferencesUtil.default_skip_first_screen)){
+            permissioncheck();
+            finish();
+            return;
+        }
+
         addview();
 
     }

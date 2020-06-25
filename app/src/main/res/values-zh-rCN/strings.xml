@@ -50,5 +50,11 @@
     <string name="window_height">窗体高度</string>
     <string name="show_fps">显示fps</string>
     <string name="support_fps_mo">支持fps监控：</string>
+    <string name="skip_first_screen_str">跳过兼容性检测页面</string>
+    <string name="skip_first_screen_str2">启用这个选项后，启动应用时的兼容性检查页面将会被跳过，这意味着启动应用时监视器页面将会被直接打开。\n如果你想要关闭这个选项，请长按监视器页面的“关闭”按钮。</string>
+    <string name="notice">注意</string>
+    <string name="ok">我明白了</string>
+    <string name="cancel">取消</string>
+    <string name="skip_first_screen_str_disabled">跳过兼容性检测页面已禁用</string>
 
 </resources>

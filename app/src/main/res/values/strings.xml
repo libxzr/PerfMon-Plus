@@ -50,4 +50,10 @@
     <string name="window_height">Window height</string>
     <string name="show_fps">Show fps</string>
     <string name="support_fps_mo">"Support fps monitoring: "</string>
+    <string name="skip_first_screen_str">Skip the checking screen</string>
+    <string name="skip_first_screen_str2">This will let you skip the checking screen, which means the monitor will be opened directly after launching the app.\nIf you want to disable this option, long press on the \"close\" button on the monitor screen.</string>
+    <string name="notice">Notice</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="skip_first_screen_str_disabled">Skipping the checking screen is disabled</string>
 </resources>

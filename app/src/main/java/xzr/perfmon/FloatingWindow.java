@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static xzr.perfmon.RefreshingDateThread.adrenofreq;
 import static xzr.perfmon.RefreshingDateThread.adrenoload;
@@ -144,6 +145,14 @@ public class FloatingWindow extends Service {
             @Override
             public void onClick(View view) {
                 stopSelf();
+            }
+        });
+        close.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.skip_first_screen,false).commit();
+                Toast.makeText(FloatingWindow.this,R.string.skip_first_screen_str_disabled, Toast.LENGTH_LONG).show();
+                return false;
             }
         });
         main.setOnTouchListener(new View.OnTouchListener() {

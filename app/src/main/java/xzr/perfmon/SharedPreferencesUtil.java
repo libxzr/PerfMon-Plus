@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 public class SharedPreferencesUtil {
     static SharedPreferences sharedPreferences;
 
+    static final String skip_first_screen="skip_first_screen";
+    static final boolean default_skip_first_screen=false;
+
     static final String delay="refreshing_delay";
     static final int default_delay=1000;
 
