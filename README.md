@@ -1,6 +1,6 @@
 # <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/app/src/main/res/drawable/icon.png" width="70" height="70" /> PerfMon+ 
-A simple performance monitor for android
-### What it can do?
+A simple performance monitor for Android.
+### Features:
 * cpufreq monitoring
 * cpuload monitoring
 * gpufreq monitoring
@@ -16,4 +16,4 @@ A simple performance monitor for android
 <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/1.jpg" width="360" height="640" /> <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/2.jpg" width="360" height="640" />
 <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/3.jpg" width="360" height="640" /> <img src="https://raw.githubusercontent.com/xzr467706992/PerfMon-Plus/master/screenshots/4.jpg" width="360" height="640" />
 
-### Any star, fork, PR is welcomed
+### Any star, fork, PR is welcome
