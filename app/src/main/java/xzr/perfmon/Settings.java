@@ -50,7 +50,12 @@ class Settings{
                                         SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.skip_first_screen,true).commit();
                                     }
                                 })
-                                .setNegativeButton(R.string.cancel, null)
+                                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        sw.setChecked(false);
+                                    }
+                                })
                                 .create().show();
                     }
                     else{
