@@ -22,7 +22,7 @@ public class SharedPreferencesUtil {
     static final boolean reverse_current_default=false;
 
     static final String size_multiple="size_multiple";
-    static final float size_multiple_default=1;
+    static final float size_multiple_default= (float) 0.8;
 
     static final String show_cpufreq="show_cpufreq";
     static final boolean show_cpufreq_default=true;
