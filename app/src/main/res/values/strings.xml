@@ -18,7 +18,7 @@
     <string name="permissive_selinux">Permissive SELinux (ROOT)</string>
     <string name="permission_denied">Permission denied</string>
     <string name="permissive_done">Succeed in changing SElinux mode, please re-open the app</string>
-    <string name="permissive_selinux_description">* Watch out ! Permissiving SELinux may cause system crash on some devices</string>
+    <string name="permissive_selinux_description">* Watch out ! Permissiving SELinux may cause system crash on some devices\n * You can re-enforce SELinux by long pressing the button above\n</string>
     <string name="visit_github">"Visit Github "</string>
     <string name="visit_coolapk">| Visit Coolapk</string>
     <string name="offline">offline</string>
@@ -56,4 +56,5 @@
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
     <string name="skip_first_screen_str_disabled">Skipping the checking screen is disabled</string>
+    <string name="enforce_done">SELinux is now enforcing, please re-open the app.</string>
 </resources>

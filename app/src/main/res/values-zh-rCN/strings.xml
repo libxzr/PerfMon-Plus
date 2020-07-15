@@ -18,7 +18,7 @@
     <string name="permissive_selinux">关闭SELinux (ROOT)</string>
     <string name="permission_denied">没有ROOT权限</string>
     <string name="permissive_done">执行完毕 请重新打开软件</string>
-    <string name="permissive_selinux_description">* 并不是真正的关闭SELinux 仅仅只是make it permissive\n* 此操作可能在一些设备上诱发崩溃\n</string>
+    <string name="permissive_selinux_description">* 并不是真正的关闭SELinux 仅仅只是make it permissive\n* 此操作可能在一些设备上诱发崩溃\n* 你可以通过长按“关闭SELinux按钮”来重新启用SELinux\n</string>
     <string name="visit_github">"访问Github "</string>
     <string name="visit_coolapk">| 访问酷安（给个五星好评吧）</string>
     <string name="offline">离线</string>
@@ -56,5 +56,6 @@
     <string name="ok">我明白了</string>
     <string name="cancel">取消</string>
     <string name="skip_first_screen_str_disabled">跳过兼容性检测页面已禁用</string>
+    <string name="enforce_done">SELinux已启用！请重启本应用</string>
 
 </resources>

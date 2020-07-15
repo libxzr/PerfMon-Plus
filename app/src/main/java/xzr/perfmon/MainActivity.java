@@ -171,6 +171,34 @@ public class MainActivity extends Activity {
                     }
                 }
             });
+            button.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    try{
+                        Process process=new ProcessBuilder("su").redirectErrorStream(true).start();
+                        BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(process.getInputStream()));
+                        OutputStreamWriter outputStreamWriter=new OutputStreamWriter(process.getOutputStream());
+                        outputStreamWriter.write("setenforce 1\nexit\n");
+                        outputStreamWriter.flush();
+                        String log="";
+                        String cache;
+                        while ((cache=bufferedReader.readLine())!=null){
+                            log=log+cache+"\n";
+                        }
+                        if (log.equals("")){
+                            Toast.makeText(MainActivity.this,R.string.enforce_done,Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this,log,Toast.LENGTH_SHORT).show();
+                        }
+                        finish();
+                    }
+                    catch (Exception e){
+                        Toast.makeText(MainActivity.this,R.string.permission_denied,Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
+                }
+            });
         }
         {
             TextView textView=new TextView(this);
