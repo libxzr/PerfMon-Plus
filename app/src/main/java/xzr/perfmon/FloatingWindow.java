@@ -239,7 +239,7 @@ public class FloatingWindow extends Service {
                     i++;
                 }
                 if (Support.support_llcbw&&show_llcbw_now) {
-                    line[i].setText("llcbw " + llcbw);
+                    line[i].setText("llccbw " + llcbw);
                     i++;
                 }
                 if (Support.support_m4m&show_m4m_now) {
