@@ -137,7 +137,7 @@ JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcurrent
 JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpunum
         (JNIEnv *env, jclass jclass1){
     int cpunum;
-    if(readprocessint("cat /proc/cpuinfo |grep \"processor\"|wc -l",&cpunum))
+    if(readprocessint("ls /sys/devices/system/cpu | grep -o \"cpu[0-9]*$\" | wc -l",&cpunum))
         return 0;
     return cpunum;
 }
