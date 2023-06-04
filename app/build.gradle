@@ -1,7 +1,10 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 30
+    namespace 'xzr.perfmon'
+    compileSdkVersion 33
     defaultConfig {
         applicationId "xzr.perfmon"
         minSdkVersion 21
@@ -21,12 +24,9 @@ android {
             path file('src/main/jni/Android.mk')
         }
     }
-    ndkVersion '21.3.6528147'
+    ndkVersion '25.2.9519653'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
