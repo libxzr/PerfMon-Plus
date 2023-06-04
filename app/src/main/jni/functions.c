@@ -81,7 +81,7 @@ int get_cpu_time(int cpu, int *full_time, int *idle_time) {
 
 }
 
-#define MAX_SENSOR_NUM 100
+#define MAX_SENSOR_NUM 150
 #define DEFAULT_SENSOR_NAME_SIZE 30
 #define TSENS_TZ "tsens_tz_sensor"
 #define CPU_SENSOR "cpu"
