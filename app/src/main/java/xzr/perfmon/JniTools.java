@@ -4,20 +4,36 @@ public class JniTools {
     static {
         System.loadLibrary("tools");
     }
-    public static native int getcpufreq(int cpu);
-    public static native int getadrenofreq();
-    public static native int getadrenoload();
-    public static native int getmincpubw();
-    public static native int getcpubw();
-    public static native int getllcbw();
-    public static native int getgpubw();
-    public static native int getm4m();
-    public static native int getcpuload(int cpu);
-    public static native boolean checkcpuload();
-    public static native int getcpuonlinestatus(int cpu);
-    public static native int getmaxtemp();
-    public static native int getmemusage();
-    public static native int getcurrent();
-    public static native int getcpunum();
-    public static native String getfps();
+
+    public static native int getCpuFreq(int cpu);
+
+    public static native int getAdrenoFreq();
+
+    public static native int getAdrenoLoad();
+
+    public static native int getMinCpuBw();
+
+    public static native int getCpuBw();
+
+    public static native int getLlccBw();
+
+    public static native int getGpuBw();
+
+    public static native int getM4m();
+
+    public static native int getCpuLoad(int cpu);
+
+    public static native boolean checkCpuLoad();
+
+    public static native int getCpuOnlineStatus(int cpu);
+
+    public static native int getMaxTemp();
+
+    public static native int getMemUsage();
+
+    public static native int getCurrent();
+
+    public static native int getCpuNum();
+
+    public static native String getFps();
 }

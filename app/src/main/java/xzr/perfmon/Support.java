@@ -14,78 +14,67 @@ class Support {
     static boolean support_llcbw;
     static boolean support_fps;
 
-    static final int UNSUPPORTED=-1;
+    static final int UNSUPPORTED = -1;
 
-    static int CheckSupport(){
-        int linen=0;
+    static int CheckSupport() {
+        int linen = 0;
 
-        if(JniTools.getcpufreq(0)!=UNSUPPORTED) {
+        if (JniTools.getCpuFreq(0) != UNSUPPORTED) {
             linen = linen + RefreshingDateThread.cpunum;
-            support_cpufreq=true;
-        }
-        else support_cpufreq=false;
+            support_cpufreq = true;
+        } else support_cpufreq = false;
 
-        support_cpuload=JniTools.checkcpuload();
+        support_cpuload = JniTools.checkCpuLoad();
 
-        if(JniTools.getadrenofreq()!=UNSUPPORTED) {
+        if (JniTools.getAdrenoFreq() != UNSUPPORTED) {
             linen++;
-            support_adrenofreq=true;
-        }
-        else support_adrenofreq=false;
+            support_adrenofreq = true;
+        } else support_adrenofreq = false;
 
-        if(JniTools.getmincpubw()!=UNSUPPORTED) {
+        if (JniTools.getMinCpuBw() != UNSUPPORTED) {
             linen++;
-            support_mincpubw=true;
-        }
-        else support_mincpubw=false;
+            support_mincpubw = true;
+        } else support_mincpubw = false;
 
-        if(JniTools.getcpubw()!=UNSUPPORTED) {
+        if (JniTools.getCpuBw() != UNSUPPORTED) {
             linen++;
-            support_cpubw=true;
-        }
-        else support_cpubw=false;
+            support_cpubw = true;
+        } else support_cpubw = false;
 
-        if(JniTools.getm4m()!=UNSUPPORTED) {
+        if (JniTools.getM4m() != UNSUPPORTED) {
             linen++;
-            support_m4m=true;
-        }
-        else support_m4m=false;
+            support_m4m = true;
+        } else support_m4m = false;
 
-        if(JniTools.getmaxtemp()!=UNSUPPORTED) {
+        if (JniTools.getMaxTemp() != UNSUPPORTED) {
             linen++;
-            support_temp=true;
-        }
-        else support_temp=false;
+            support_temp = true;
+        } else support_temp = false;
 
-        if(JniTools.getmemusage()!=UNSUPPORTED) {
+        if (JniTools.getMemUsage() != UNSUPPORTED) {
             linen++;
-            support_mem=true;
-        }
-        else support_mem=false;
+            support_mem = true;
+        } else support_mem = false;
 
-        if(JniTools.getcurrent()!=UNSUPPORTED) {
+        if (JniTools.getCurrent() != UNSUPPORTED) {
             linen++;
-            support_current=true;
-        }
-        else support_current=false;
+            support_current = true;
+        } else support_current = false;
 
-        if(JniTools.getgpubw()!=UNSUPPORTED) {
+        if (JniTools.getGpuBw() != UNSUPPORTED) {
             linen++;
-            support_gpubw=true;
-        }
-        else support_gpubw=false;
+            support_gpubw = true;
+        } else support_gpubw = false;
 
-        if(JniTools.getllcbw()!=UNSUPPORTED) {
+        if (JniTools.getLlccBw() != UNSUPPORTED) {
             linen++;
-            support_llcbw=true;
-        }
-        else support_llcbw=false;
+            support_llcbw = true;
+        } else support_llcbw = false;
 
-        if(!JniTools.getfps().equals("")) {
+        if (!JniTools.getFps().equals("")) {
             linen++;
-            support_fps=true;
-        }
-        else support_fps=false;
+            support_fps = true;
+        } else support_fps = false;
 
         return linen;
     }

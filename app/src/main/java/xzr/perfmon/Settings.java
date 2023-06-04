@@ -13,41 +13,42 @@ import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-class Settings{
+class Settings {
     private static AlertDialog dialog;
-    static void creatDialog(Context context){
-        dialog=new AlertDialog.Builder(context)
+
+    static void createDialog(Context context) {
+        dialog = new AlertDialog.Builder(context)
                 .setView(settingsView(context))
                 .setTitle(R.string.settings)
                 .create();
         dialog.show();
     }
 
-    private static View settingsView(final Context context){
-        ScrollView scrollView=new ScrollView(context);
+    private static View settingsView(final Context context) {
+        ScrollView scrollView = new ScrollView(context);
 
 
-        LinearLayout linearLayout=new LinearLayout(context);
+        LinearLayout linearLayout = new LinearLayout(context);
         scrollView.addView(linearLayout);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
         {
-            final Switch sw=new Switch(context);
+            final Switch sw = new Switch(context);
             linearLayout.addView(sw);
             sw.setText(R.string.skip_first_screen_str);
-            if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.skip_first_screen,SharedPreferencesUtil.default_skip_first_screen))
+            if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SKIP_FIRST_SCREEN, SharedPreferencesUtil.DEFAULT_SKIP_FIRST_SCREEN))
                 sw.setChecked(true);
             sw.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(sw.isChecked()) {
+                    if (sw.isChecked()) {
                         new AlertDialog.Builder(context)
                                 .setTitle(R.string.notice)
                                 .setMessage(R.string.skip_first_screen_str2)
                                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.skip_first_screen,true).commit();
+                                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SKIP_FIRST_SCREEN, true).commit();
                                     }
                                 })
                                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -57,26 +58,25 @@ class Settings{
                                     }
                                 })
                                 .create().show();
-                    }
-                    else{
-                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.skip_first_screen,false).commit();
+                    } else {
+                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SKIP_FIRST_SCREEN, false).commit();
                     }
                 }
             });
         }
 
         {
-            LinearLayout line=new LinearLayout(context);
+            LinearLayout line = new LinearLayout(context);
             linearLayout.addView(line);
 
-            TextView textView=new TextView(context);
+            TextView textView = new TextView(context);
             line.addView(textView);
             textView.setText(R.string.refresh_interval);
 
-            EditText editText=new EditText(context);
+            EditText editText = new EditText(context);
             line.addView(editText);
             editText.setHint(R.string.default_value);
-            editText.setText(SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.delay, SharedPreferencesUtil.default_delay)+"");
+            editText.setText(SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.REFRESHING_DELAY, SharedPreferencesUtil.DEFAULT_DELAY) + "");
             editText.setWidth(500);
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
             editText.addTextChangedListener(new TextWatcher() {
@@ -92,11 +92,10 @@ class Settings{
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    try{
-                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.delay,Integer.parseInt(editable.toString())).commit();
-                    }
-                    catch (Exception e){
-                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.delay).commit();
+                    try {
+                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.REFRESHING_DELAY, Integer.parseInt(editable.toString())).commit();
+                    } catch (Exception e) {
+                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.REFRESHING_DELAY).commit();
                     }
                 }
             });
@@ -104,40 +103,39 @@ class Settings{
 
         }
         {
-            TextView textView=new TextView(context);
+            TextView textView = new TextView(context);
             linearLayout.addView(textView);
             textView.setText(R.string.interval_notice);
         }
         {
-            final Switch sw=new Switch(context);
+            final Switch sw = new Switch(context);
             linearLayout.addView(sw);
             sw.setText(R.string.reverse_current);
-            if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.reverse_current,SharedPreferencesUtil.reverse_current_default))
+            if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.REVERSE_CURRENT, SharedPreferencesUtil.REVERSE_CURRENT_DEFAULT))
                 sw.setChecked(true);
             sw.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(sw.isChecked()) {
-                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.reverse_current,true).commit();
-                    }
-                    else{
-                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.reverse_current,false).commit();
+                    if (sw.isChecked()) {
+                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.REVERSE_CURRENT, true).commit();
+                    } else {
+                        SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.REVERSE_CURRENT, false).commit();
                     }
                 }
             });
         }
         {
-            LinearLayout line=new LinearLayout(context);
+            LinearLayout line = new LinearLayout(context);
             linearLayout.addView(line);
 
-            TextView textView=new TextView(context);
+            TextView textView = new TextView(context);
             line.addView(textView);
             textView.setText(R.string.size_multiple);
 
-            EditText editText=new EditText(context);
+            EditText editText = new EditText(context);
             line.addView(editText);
             editText.setHint(R.string.default_value);
-            editText.setText(SharedPreferencesUtil.sharedPreferences.getFloat(SharedPreferencesUtil.size_multiple, SharedPreferencesUtil.size_multiple_default)+"");
+            editText.setText(SharedPreferencesUtil.sharedPreferences.getFloat(SharedPreferencesUtil.SIZE_MULTIPLE, SharedPreferencesUtil.SIZE_MULTIPLE_DEFAULT) + "");
             editText.setWidth(500);
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -152,11 +150,10 @@ class Settings{
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    try{
-                        SharedPreferencesUtil.sharedPreferences.edit().putFloat(SharedPreferencesUtil.size_multiple,Float.parseFloat(editable.toString())).commit();
-                    }
-                    catch (Exception e){
-                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.size_multiple).commit();
+                    try {
+                        SharedPreferencesUtil.sharedPreferences.edit().putFloat(SharedPreferencesUtil.SIZE_MULTIPLE, Float.parseFloat(editable.toString())).commit();
+                    } catch (Exception e) {
+                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.SIZE_MULTIPLE).commit();
                     }
                 }
             });
@@ -164,257 +161,244 @@ class Settings{
 
         }
         {
-            TextView textView=new TextView(context);
+            TextView textView = new TextView(context);
             textView.setText(R.string.moni_ctl);
             linearLayout.addView(textView);
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_cpufreq);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpufreq,SharedPreferencesUtil.show_cpufreq_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_CPUFREQ, SharedPreferencesUtil.SHOW_CPUFREQ_DEFAULT))
                     sw.setChecked(true);
-                        sw.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                if(sw.isChecked()) {
-                                    SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpufreq,true).commit();
-                                }
-                                else{
-                                    SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpufreq,false).commit();
-                                }
+                sw.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CPUFREQ, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CPUFREQ, false).commit();
+                        }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_cpuload);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpuload,SharedPreferencesUtil.show_cpuload_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_CPULOAD, SharedPreferencesUtil.SHOW_CPULOAD_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpuload,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpuload,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CPULOAD, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CPULOAD, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_gpufreq);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpufreq,SharedPreferencesUtil.show_gpufreq_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_GPUFREQ, SharedPreferencesUtil.SHOW_GPUFREQ_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpufreq,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpufreq,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_GPUFREQ, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_GPUFREQ, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_gpuload);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpuload,SharedPreferencesUtil.show_gpuload_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_GPULOAD, SharedPreferencesUtil.SHOW_GPULOAD_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpuload,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpuload,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_GPULOAD, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_GPULOAD, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_cpubw);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_cpubw,SharedPreferencesUtil.show_cpubw_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_CPUBW, SharedPreferencesUtil.SHOW_CPUBW_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpubw,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_cpubw,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CPUBW, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CPUBW, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_gpubw);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_gpubw,SharedPreferencesUtil.show_gpubw_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_GPUBW, SharedPreferencesUtil.SHOW_GPUBW_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpubw,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_gpubw,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_GPUBW, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_GPUBW, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_mincpubw);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mincpubw,SharedPreferencesUtil.show_mincpubw_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_MINCPUBW, SharedPreferencesUtil.SHOW_MINCPUBW_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mincpubw,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mincpubw,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_MINCPUBW, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_MINCPUBW, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_llcbw);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_llcbw,SharedPreferencesUtil.show_llcbw_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_LLCBW, SharedPreferencesUtil.SHOW_LLCBW_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_llcbw,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_llcbw,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_LLCBW, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_LLCBW, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_m4m);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_m4m,SharedPreferencesUtil.show_m4m_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_M4M, SharedPreferencesUtil.SHOW_M4M_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_m4m,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_m4m,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_M4M, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_M4M, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_thermal);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_thermal,SharedPreferencesUtil.show_thermal_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_THERMAL, SharedPreferencesUtil.SHOW_THERMAL_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_thermal,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_thermal,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_THERMAL, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_THERMAL, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_mem);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_mem,SharedPreferencesUtil.show_mem_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_MEM, SharedPreferencesUtil.SHOW_MEM_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mem,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_mem,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_MEM, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_MEM, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_current);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_current,SharedPreferencesUtil.show_current_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_CURRENT, SharedPreferencesUtil.SHOW_CURRENT_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_current,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_current,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CURRENT, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_CURRENT, false).commit();
                         }
                     }
                 });
             }
             {
-                final Switch sw=new Switch(context);
+                final Switch sw = new Switch(context);
                 linearLayout.addView(sw);
                 sw.setText(R.string.show_fps);
-                if(SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.show_fps,SharedPreferencesUtil.show_fps_default))
+                if (SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.SHOW_FPS, SharedPreferencesUtil.SHOW_FPS_DEFAULT))
                     sw.setChecked(true);
                 sw.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sw.isChecked()) {
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_fps,true).commit();
-                        }
-                        else{
-                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.show_fps,false).commit();
+                        if (sw.isChecked()) {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_FPS, true).commit();
+                        } else {
+                            SharedPreferencesUtil.sharedPreferences.edit().putBoolean(SharedPreferencesUtil.SHOW_FPS, false).commit();
                         }
                     }
                 });
             }
         }
         {
-            LinearLayout line=new LinearLayout(context);
+            LinearLayout line = new LinearLayout(context);
             linearLayout.addView(line);
 
-            TextView textView=new TextView(context);
+            TextView textView = new TextView(context);
             line.addView(textView);
             textView.setText(R.string.window_width);
-            EditText editText=new EditText(context);
+            EditText editText = new EditText(context);
             line.addView(editText);
             editText.setHint(R.string.default_value);
-            int width=SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.width, SharedPreferencesUtil.default_width);
-            if (width!=-1)
-                editText.setText(width+"");
+            int width = SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.WINDOW_WIDTH, SharedPreferencesUtil.DEFAULT_WIDTH);
+            if (width != -1)
+                editText.setText(width + "");
             editText.setWidth(500);
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
             editText.addTextChangedListener(new TextWatcher() {
@@ -430,11 +414,10 @@ class Settings{
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    try{
-                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.width,Integer.parseInt(editable.toString())).commit();
-                    }
-                    catch (Exception e){
-                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.width).commit();
+                    try {
+                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.WINDOW_WIDTH, Integer.parseInt(editable.toString())).commit();
+                    } catch (Exception e) {
+                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.WINDOW_WIDTH).commit();
                     }
 
                 }
@@ -444,19 +427,19 @@ class Settings{
         }
 
         {
-            LinearLayout line=new LinearLayout(context);
+            LinearLayout line = new LinearLayout(context);
             linearLayout.addView(line);
 
-            TextView textView=new TextView(context);
+            TextView textView = new TextView(context);
             line.addView(textView);
             textView.setText(R.string.window_height);
 
-            EditText editText=new EditText(context);
+            EditText editText = new EditText(context);
             line.addView(editText);
             editText.setHint(R.string.default_value);
-            int height=SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.height, SharedPreferencesUtil.default_height);
-            if (height!=-1)
-                editText.setText(height+"");
+            int height = SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.WINDOW_HEIGHT, SharedPreferencesUtil.DEFAULT_WINDOW_HEIGHT);
+            if (height != -1)
+                editText.setText(height + "");
             editText.setWidth(500);
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
             editText.addTextChangedListener(new TextWatcher() {
@@ -472,11 +455,10 @@ class Settings{
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    try{
-                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.height,Integer.parseInt(editable.toString())).commit();
-                    }
-                    catch (Exception e){
-                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.height).commit();
+                    try {
+                        SharedPreferencesUtil.sharedPreferences.edit().putInt(SharedPreferencesUtil.WINDOW_HEIGHT, Integer.parseInt(editable.toString())).commit();
+                    } catch (Exception e) {
+                        SharedPreferencesUtil.sharedPreferences.edit().remove(SharedPreferencesUtil.WINDOW_HEIGHT).commit();
                     }
 
                 }

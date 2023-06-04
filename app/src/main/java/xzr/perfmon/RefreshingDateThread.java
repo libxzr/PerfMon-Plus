@@ -18,60 +18,60 @@ public class RefreshingDateThread extends Thread {
     static String fps;
 
     static int delay;
-    static boolean reverse_current_now;
-    public void run(){
-        delay= SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.delay, SharedPreferencesUtil.default_delay);
-        reverse_current_now=SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.reverse_current,SharedPreferencesUtil.reverse_current_default);
-        cpufreq=new int[cpunum];
-        cpuload=new int[cpunum];
-        cpuonline=new int[cpunum];
-        while (!FloatingWindow.do_exit){
-                for (int i=0;i<cpunum;i++){
-                    cpuonline[i]=JniTools.getcpuonlinestatus(i);
-                    if(cpuonline[i]==1&&FloatingWindow.show_cpufreq_now)
-                    cpufreq[i]=JniTools.getcpufreq(i);
-                }
-                if(FloatingWindow.show_gpufreq_now&&Support.support_adrenofreq)
-                    adrenofreq=JniTools.getadrenofreq();
-                if(FloatingWindow.show_gpuload_now&&Support.support_adrenofreq)
-                    adrenoload=JniTools.getadrenoload();
-                if(FloatingWindow.show_mincpubw_now&&Support.support_mincpubw)
-                    mincpubw=JniTools.getmincpubw();
-                if(FloatingWindow.show_cpubw_now&&Support.support_cpubw)
-                    cpubw=JniTools.getcpubw();
-                if(FloatingWindow.show_m4m_now&&Support.support_m4m)
-                    m4m=JniTools.getm4m();
-                if(FloatingWindow.show_thermal_now&&Support.support_temp)
-                    maxtemp=JniTools.getmaxtemp();
-                if(FloatingWindow.show_mem_now&&Support.support_mem)
-                    memusage=JniTools.getmemusage();
-                if(FloatingWindow.show_current_now&&Support.support_current)
-                    current=JniTools.getcurrent();
-                if(FloatingWindow.show_gpubw_now&&Support.support_gpubw)
-                    gpubw=JniTools.getgpubw();
-                if(FloatingWindow.show_llcbw_now&&Support.support_llcbw)
-                    llcbw=JniTools.getllcbw();
-            if(FloatingWindow.show_fps_now&&Support.support_fps)
-                fps=JniTools.getfps();
-                if(reverse_current_now)
-                    current=-current;
-                FloatingWindow.ui_refresher.sendEmptyMessage(0);
-                for (int i=0;i<cpunum;i++){
-                    if(cpuonline[i]==1&&FloatingWindow.show_cpuload_now&&Support.support_cpuload) {
-                        final int ii=i;
-                        new Thread() {
-                            public void run() {
-                                cpuload[ii] = JniTools.getcpuload(ii);
-                            }
-                        }.start();
-                    }
-                }
-                try {
-                    Thread.sleep(delay);
-                }
-                catch (Exception e){
+    static boolean reverseCurrentNow;
 
+    public void run() {
+        delay = SharedPreferencesUtil.sharedPreferences.getInt(SharedPreferencesUtil.REFRESHING_DELAY, SharedPreferencesUtil.DEFAULT_DELAY);
+        reverseCurrentNow = SharedPreferencesUtil.sharedPreferences.getBoolean(SharedPreferencesUtil.REVERSE_CURRENT, SharedPreferencesUtil.REVERSE_CURRENT_DEFAULT);
+        cpufreq = new int[cpunum];
+        cpuload = new int[cpunum];
+        cpuonline = new int[cpunum];
+        while (!FloatingWindow.doExit) {
+            for (int i = 0; i < cpunum; i++) {
+                cpuonline[i] = JniTools.getCpuOnlineStatus(i);
+                if (cpuonline[i] == 1 && FloatingWindow.showCpufreqNow)
+                    cpufreq[i] = JniTools.getCpuFreq(i);
+            }
+            if (FloatingWindow.showGpufreqNow && Support.support_adrenofreq)
+                adrenofreq = JniTools.getAdrenoFreq();
+            if (FloatingWindow.showGpuloadNow && Support.support_adrenofreq)
+                adrenoload = JniTools.getAdrenoLoad();
+            if (FloatingWindow.showMincpubwNow && Support.support_mincpubw)
+                mincpubw = JniTools.getMinCpuBw();
+            if (FloatingWindow.showCpubwNow && Support.support_cpubw)
+                cpubw = JniTools.getCpuBw();
+            if (FloatingWindow.showM4MNow && Support.support_m4m)
+                m4m = JniTools.getM4m();
+            if (FloatingWindow.showThermalNow && Support.support_temp)
+                maxtemp = JniTools.getMaxTemp();
+            if (FloatingWindow.showMemNow && Support.support_mem)
+                memusage = JniTools.getMemUsage();
+            if (FloatingWindow.showCurrentNow && Support.support_current)
+                current = JniTools.getCurrent();
+            if (FloatingWindow.showGpubwNow && Support.support_gpubw)
+                gpubw = JniTools.getGpuBw();
+            if (FloatingWindow.showLlcbwNow && Support.support_llcbw)
+                llcbw = JniTools.getLlccBw();
+            if (FloatingWindow.showFpsNow && Support.support_fps)
+                fps = JniTools.getFps();
+            if (reverseCurrentNow)
+                current = -current;
+            FloatingWindow.uiRefresher.sendEmptyMessage(0);
+            for (int i = 0; i < cpunum; i++) {
+                if (cpuonline[i] == 1 && FloatingWindow.showCpuloadNow && Support.support_cpuload) {
+                    final int ii = i;
+                    new Thread() {
+                        public void run() {
+                            cpuload[ii] = JniTools.getCpuLoad(ii);
+                        }
+                    }.start();
                 }
+            }
+            try {
+                Thread.sleep(delay);
+            } catch (Exception e) {
+
+            }
         }
     }
 }

@@ -12,128 +12,128 @@ extern "C" {
  * Method:    getcpufreq
  * Signature: (I)I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpufreq
-  (JNIEnv *, jclass, jint);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getCpuFreq
+        (JNIEnv *, jclass, jint);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getadrenofreq
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getadrenofreq
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getAdrenoFreq
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getadrenoload
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getadrenoload
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getAdrenoLoad
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getmincpubw
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmincpubw
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getMinCpuBw
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getcpubw
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpubw
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getCpuBw
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getllcbw
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getllcbw
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getLlccBw
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getgpubw
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getgpubw
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getGpuBw
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getm4m
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getm4m
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getM4m
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getcpuload
  * Signature: (I)I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuload
-  (JNIEnv *, jclass, jint);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getCpuLoad
+        (JNIEnv *, jclass, jint);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    checkcpuload
  * Signature: ()Z
  */
-JNIEXPORT jboolean JNICALL Java_xzr_perfmon_JniTools_checkcpuload
-  (JNIEnv *, jclass);
+JNIEXPORT jboolean JNICALL Java_xzr_perfmon_JniTools_checkCpuLoad
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getcpuonlinestatus
  * Signature: (I)I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpuonlinestatus
-  (JNIEnv *, jclass, jint);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getCpuOnlineStatus
+        (JNIEnv *, jclass, jint);
 
 /*
  * Class:     xzr_perfmon_JniTools
- * Method:    getmaxtemp
+ * Method:    get_max_temp
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmaxtemp
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getMaxTemp
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getmemusage
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getmemusage
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getMemUsage
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getcurrent
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcurrent
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getCurrent
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getcpunum
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getcpunum
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_xzr_perfmon_JniTools_getCpuNum
+        (JNIEnv *, jclass);
 
 /*
  * Class:     xzr_perfmon_JniTools
  * Method:    getfps
  * Signature: ()Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_xzr_perfmon_JniTools_getfps
-  (JNIEnv *, jclass);
+JNIEXPORT jstring JNICALL Java_xzr_perfmon_JniTools_getFps
+        (JNIEnv *, jclass);
 
 #ifdef __cplusplus
 }
